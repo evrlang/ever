@@ -1,5 +1,5 @@
 
-<img src="everlang.jpg" height="100" width="100"/>
+<img src="everlogo.jpg" height="100" width="100"/>
 </center>
 
 ## Quick Install (Linux/macOS)
