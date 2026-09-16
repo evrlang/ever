@@ -1,8 +1,8 @@
-module ekoc.ekoctoken;
+module everc.everctoken;
 
 import std.stdio;
 
-string[] ekoc_token(string line)
+string[] everc_token(string line)
 {
     bool inp = false;
     string current = "";

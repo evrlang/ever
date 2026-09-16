@@ -1,4 +1,4 @@
-module ekograp.functions;
+module evergrap.functions;
 
 import std.stdio;
 import arsd.simpledisplay, error, std.regex, std.algorithm, std.conv;

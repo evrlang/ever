@@ -9,31 +9,31 @@ import astsupport;
 // web server
 import handy_httpd;
 import handy_httpd.handlers.file_resolving_handler;
-import ekoc.ekomain;
+import everc.evermain;
 int oa = 0;
 string aj;
 //import argparse;
-string eko_ver = "0.0.4";
+string ever_ver = "0.0.4";
 void prHelpMenu()
 {
-	writeln("\033[1mEko (V0.0.5) https://github.com/ekolang/eko");
-		writeln("	Usage: ./eko [flag] [options]");
-        writeln("\nFlags:\n	-e | --enter: Importing a Eko program");
+	writeln("\033[1mever (V0.0.5) https://github.com/everlang/ever");
+		writeln("	Usage: ./ever [flag] [options]");
+        writeln("\nFlags:\n	-e | --enter: Importing a ever program");
 		//writeln("	-ge| --generate-exe: Generate an executable binary as a standalone application.");
 		writeln("	-n | --normal: Run the interpreter in normal mode (without interpretation messages)");
 		writeln("	-d | --debug: Run the interpreter in debug mode and display messages during the interpretation process.");
 		//writeln("	-x | --xdoc: Offline Documents in localhost.");
-		//writeln("	-v | --version: show version of EkoInterperter.");
+		//writeln("	-v | --version: show version of everInterperter.");
 		//writeln("	-h | --help: show current menu.");
 		// writeln("	-spe | --sboxprinterror: Show errors of SboX.");
-		//writeln("	-adebug | --asm-debug: Print result of EkoC to NASM.");
-		//writeln("	-cdebug | --csc-debug: Printf Eko to EkoC result.");
+		//writeln("	-adebug | --asm-debug: Print result of everC to NASM.");
+		//writeln("	-cdebug | --csc-debug: Printf ever to everC result.");
 		writeln("	-td | --term-debugger: run terminal-based Debugger.");
 		writeln("	-ast | --abstract-syntax-tree: Use AST to run your program. (BETA)");
 		writeln("Versions:");
 		writeln("	marschiert(runtime librray): " ~ _version);
-		writeln("	Eko: 0.0.5");
-		writeln("\nExample: ./eko -e hi.eko -n\033[0m");
+		writeln("	ever: 0.0.5");
+		writeln("\nExample: ./ever -e hi.ever -n\033[0m");
 }
 void main(string[] args)
 {
@@ -46,13 +46,13 @@ void main(string[] args)
 	);
 	argm.addArgument(
 		["-e", "--enter"],
-		"run interperter for an eko program",
+		"run interperter for an ever program",
 		infs(args[2], "normal", "ll", 0)
 	);
 	argm.addArgument(
 		["-v", "--version"],
-		"Show version of Eko",
-		writeln("\033[1mEko " ~ eko_ver ~" " ~ __DATE__ ~ " " ~ __TIME__)
+		"Show version of ever",
+		writeln("\033[1mever " ~ ever_ver ~" " ~ __DATE__ ~ " " ~ __TIME__)
 	);
 	argm.addArgument(
 		["-ast", "--abstract-syntax-tree"],
@@ -89,40 +89,40 @@ void main(string[] args)
         }
     } else if (args[1] == "-v" || args[1] == "--version")
 	{
-		writeln("\033[1mEko (v0.0.4) " ~ __DATE__ ~ " " ~ __TIME__);
+		writeln("\033[1mever (v0.0.4) " ~ __DATE__ ~ " " ~ __TIME__);
 	} else if (args[1] == "-h" || args[1] == "--help")
 	{
 		prHelpMenu();
 	} else if (args[1] == "-td" || args[1] == "--term-debugger")
 	{
-		writeln("\033[1mEko-Term-Debugger V0.0.1 based on Eko Version 0.1\033[0m");
-		writeln("\033[34mhttps://github.com/anhumandev/eko/p-term-debugger/\033[0m");
+		writeln("\033[1mever-Term-Debugger V0.0.1 based on ever Version 0.1\033[0m");
+		writeln("\033[34mhttps://github.com/anhumandev/ever/p-term-debugger/\033[0m");
 		writeln("\033[1m\n\t[I]: Run \"help\" to get list of functions and a help menu.\033[0m");
 		writeln("");
 		ctermde();
 	} else if (args[1] == "-rv" || args[1] == "--runtime-version")
 	{
-		writeln("\033[1mMarschiert (runtime library for Eko) " ~ _version ~ "\n© 2026 All rights reserved.\033[0m");
+		writeln("\033[1mMarschiert (runtime library for ever) " ~ _version ~ "\n© 2026 All rights reserved.\033[0m");
 	} else if (args[1] == "-x" || args[1] == "--xdoc")
 	{
-		auto ekoa = new FileResolvingHandler(".");
+		auto evera = new FileResolvingHandler(".");
 		new HttpServer().start();
 	} else if (args[1] == "-ast" || args[1] == "--abstract-syntax-tree")
 	{
 		if(args.length > 3 && args[3] == "--print:ast") astSupportRun(args[2], 1);
 		else astSupportRun(args[2], 0);
-	} else if(args[1] == "--enable-test:ekoc")
+	} else if(args[1] == "--enable-test:everc")
 			{
 				auto jaa = readText(args[2]);
 				auto ajj = jaa.splitLines();
-				ekocmain_run(ajj);
+				evercmain_run(ajj);
 			}
 }
 
 void ctermde()
 {
 	//int oa = 0;
-	write("(eko-term-debugger) ");
+	write("(ever-term-debugger) ");
 	auto jaj = readln();
 	if (jaj.strip() == "help")
 	{
@@ -169,6 +169,6 @@ void help()
 	writeln("A quick Help Menu for csl-term-debugger.");
 	writeln("\n\thelp: show current menu.");
 	writeln("\tinclude FILEPATH [option=exe, engine]: run or compile a csl file in debug mode.");
-	writeln("\tasm: show result of convert Eko to asm. (just work in include exe.)");
-	writeln("\tcsc: show result of convert Eko to EkoC. (just work in include exe.)");
+	writeln("\tasm: show result of convert ever to asm. (just work in include exe.)");
+	writeln("\tcsc: show result of convert ever to everC. (just work in include exe.)");
 }

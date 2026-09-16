@@ -1,24 +1,24 @@
-module ekoc.ekomain;
-import std.stdio, ekoc.ekocast, ekoc.ekoclexer, ekoc.ekocparser, ekoc.ekoctoken, ekoc.ekostatic;
+module everc.evermain;
+import std.stdio, everc.evercast, everc.everclexer, everc.evercparser, everc.everctoken, everc.everstatic;
 import axiom;
 
 string[string] str_map;
 
-void ekocmain_run(string[] lines)
+void evercmain_run(string[] lines)
 {
     foreach(o; lines)
     {
-        string[] opa = ekoc_token(o);
+        string[] opa = everc_token(o);
         writeln(opa);
-        EkocToken[] eko_res = ekoclex(opa);
-        writeln(eko_res);
-        ASTNode[] node_res = ekocparsera(eko_res);
+        evercToken[] ever_res = everclex(opa);
+        writeln(ever_res);
+        ASTNode[] node_res = evercparsera(ever_res);
         writeln(node_res);
-        ekoc_interperter(node_res);
+        everc_interperter(node_res);
     }
 }
 
-void ekoc_interperter(ASTNode[] asd)
+void everc_interperter(ASTNode[] asd)
 {
     foreach(ast; asd)
     {

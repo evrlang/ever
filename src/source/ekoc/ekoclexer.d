@@ -1,10 +1,10 @@
-module ekoc.ekoclexer;
-import ekoc.ekostatic;
+module everc.everclexer;
+import everc.everstatic;
 string[] keywords = ["S"];
 import std.stdio, std.string, std.algorithm;
-EkocToken[] ekoclex(string[] toks)
+evercToken[] everclex(string[] toks)
 {
-    EkocToken[] tokens;
+    evercToken[] tokens;
     foreach(i; toks)
     {
         bool k = false;
@@ -12,7 +12,7 @@ EkocToken[] ekoclex(string[] toks)
         {
             if (i == o)
             {
-                tokens ~= EkocToken(i, Ekoctype.keyword);
+                tokens ~= evercToken(i, everctype.keyword);
                 k = true;
             }
         }
@@ -23,9 +23,9 @@ EkocToken[] ekoclex(string[] toks)
         }
         if (i.startsWith("@"))
         {
-            tokens ~= EkocToken(i, Ekoctype.name);
-        } else if (i == "=") tokens ~= EkocToken(i, Ekoctype.op);
-        else tokens ~= EkocToken(i, Ekoctype.valaue);
+            tokens ~= evercToken(i, everctype.name);
+        } else if (i == "=") tokens ~= evercToken(i, everctype.op);
+        else tokens ~= evercToken(i, everctype.valaue);
     }
 
     return tokens;

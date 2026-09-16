@@ -1,11 +1,11 @@
 {
 	"authors": [
-		"Ekolang",
+		"everlang",
 		"pouya1dev"
 	],
 	"license": "proprietary",
-	"copyright": "Copyright © 2026, https://github.com/ekolang, https://github.com/pouya1dev",
-	"name": "eko",
+	"copyright": "Copyright © 2026, https://github.com/everlang, https://github.com/pouya1dev",
+	"name": "ever",
 	"libs": [
 		"marschiert",
 		"axiom"

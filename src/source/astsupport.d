@@ -39,7 +39,7 @@ void astSupportRun(string filepath, int mode)
             map_str["@GREEN"] = "\033[32m";
 			interp(parser_result, 0);
         }
-    } else prinPanic(kodes._file_faild, "eko ast-mode");
+    } else prinPanic(kodes._file_faild, "ever ast-mode");
 }
 
 void astSupportLine(string li, int mode)

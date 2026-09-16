@@ -1,12 +1,12 @@
-module ekoc.ekostatic;
+module everc.everstatic;
 
-enum Ekoctype {
+enum everctype {
     keyword,
     name,
     op,
     valaue
 }
-struct EkocToken {
+struct evercToken {
     string value;
-    Ekoctype type;
+    everctype type;
 }

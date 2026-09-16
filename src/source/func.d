@@ -11,7 +11,7 @@ import core.stdc.stdlib: exit, malloc, system;
 import cslg.ultracgraphic.sgfu;
 import csl.mempack.freec;
 import csl.mempack.mallc;
-import csl.preprs.define, infss, ekograp.functions, arsd.simpledisplay, ekograp.infssfunctions;
+import csl.preprs.define, infss, evergrap.functions, arsd.simpledisplay, evergrap.infssfunctions;
 import axiom, astsupport;
 string[] allowedflags = ["_IfFlag"];
 void funcl(string lio, string mode, int addm)
@@ -80,9 +80,9 @@ void funcl(string lio, string mode, int addm)
                             }
                             writeln(regexpattern);
                             auto ja = regex(regexpattern);
-                            auto eko = match(lio, ja);
-                            if (!eko.empty){
-                                pala = eko.map!(to!string).array();
+                            auto ever = match(lio, ja);
+                            if (!ever.empty){
+                                pala = ever.map!(to!string).array();
                             } else prinPanic(kodes._syntex_faild, lio);
                         }
                         foreach (o, sga; la.code)

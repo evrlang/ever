@@ -2,7 +2,7 @@
 
 version       = "0.0.1"
 author        = "pouya1dev"
-description   = "I7 for eko"
+description   = "I7 for ever"
 license       = "MIT"
 srcDir        = "src"
 bin           = @["i7"]

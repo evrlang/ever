@@ -1,12 +1,12 @@
-module ekoc.ekocparser;
+module everc.evercparser;
 
 import std.stdio;
-import std.string, ekoc.ekocast, ekoc.ekostatic;
+import std.string, everc.evercast, everc.everstatic;
 
-ASTNode[] ekocparsera(EkocToken[] tokens)
+ASTNode[] evercparsera(evercToken[] tokens)
 {
     ASTNode[] result;
-    if (tokens[0].type == Ekoctype.keyword && tokens[1].type == Ekoctype.name && tokens[2].type == Ekoctype.op && tokens[3].type == Ekoctype.valaue)
+    if (tokens[0].type == everctype.keyword && tokens[1].type == everctype.name && tokens[2].type == everctype.op && tokens[3].type == everctype.valaue)
     {
         result ~= new DefineKeyWord(
             tokens[0].value,

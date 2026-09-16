@@ -8,7 +8,7 @@
 	"libs": [
 		"cbased"
 	],
-	"description": "ASTSupport lib for eko.",
+	"description": "ASTSupport lib for ever.",
 	"dependencies": {
 		"arsd-official:minigui": "~>12.1.2"
 	},
