@@ -5,7 +5,7 @@
 ## Quick Install (Linux/macOS)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/everlang/ever/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash
 ```
 
 <h1 style="font-weight:bold;"> ever Programming Language</h1>
