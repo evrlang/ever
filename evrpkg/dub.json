@@ -1,0 +1,9 @@
+{
+	"description": "A minimal Package Manager for Ever",
+	"license": "proprietary",
+	"authors": [
+		"evrlang"
+	],
+	"copyright": "Copyright © 2026, evrlang",
+	"name": "evrpkg"
+}

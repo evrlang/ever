@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/evrpkg
+evrpkg.so
+evrpkg.dylib
+evrpkg.dll
+libevrpkg.a
+evrpkg.a
+evrpkg.lib
+evrpkg-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
