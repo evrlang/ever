@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/git4clone-test-program
+git4clone-test-program.so
+git4clone-test-program.dylib
+git4clone-test-program.dll
+libgit4clone-test-program.a
+git4clone-test-program.a
+git4clone-test-program.lib
+git4clone-test-program-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

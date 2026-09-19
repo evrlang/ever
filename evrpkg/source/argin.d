@@ -2,6 +2,7 @@ module argin;
 
 import std.stdio, std.regex, std.string, std.path, std.json, core.stdc.stdlib, std.file, std.string;
 import std.net.curl;
+import git4clone;
 void arginit(string[] args)
 {
     if (args[1] == "install")
@@ -49,7 +50,7 @@ void arginit(string[] args)
                             rmdirRecurse(expandTilde("~/.evrpkg/pkgs/" ~ pkg["pkgname"].str));
                         }
                     }
-                    if (pkg["source"].str.startsWith("https://github.com/")) system(toStringz("git clone --depth 1 " ~ pkg["source"].str));
+                    if (pkg["source"].str.startsWith("https://github.com/")) Git4clone.download(pkg["source"].str, pkg["pkgname"].str);
                     else {
                         auto lk = get(pkg["source"].str);
                         std.file.write(pkg["pkgname"].str ~ ".evrpk", lk);
@@ -57,8 +58,8 @@ void arginit(string[] args)
                     writeln("\033[32m\033[1mDownload @" ~ pkg["username"].str ~ ":" ~ pkg["pkgname"].str ~ " finished.\033[0m");
                     writeln(pkg["desc"].str);
                     mkdirRecurse(expandTilde("~/.evrpkg/pkgs/" ~ pkg["pkgname"].str));
-                    rename(expandTilde(pkg["pkgname"].str), expandTilde("~/.evrpkg/pkgs/" ~ pkg["pkgname"].str));
-                    writeln("Install progress finshed, Done.");
+                    //rename(expandTilde(pkg["pkgname"].str), expandTilde("~/.evrpkg/pkgs/" ~ pkg["pkgname"].str));
+                    writeln("Install progress finished, Done.");
                     if (exists(expandTilde("~/.evrpkg/list.txt")) && readText(expandTilde("~/.evrpkg/list.txt")).indexOf(args[2]) == -1)
                     {
                     	auto file = File(expandTilde("~/.evrpkg/list.txt"), "a");
@@ -102,7 +103,7 @@ void arginit(string[] args)
             if (pkg.strip() == args[1] && exists(expandTilde("~/.evrpkg/pkgs/"  ~ pkg)) && isDir(expandTilde("~/.evrpkg/pkgs/") ~ pkg.strip()))
             {
                 //writeln(expandTilde("~/.evrpkg/" ~ pkg.strip() ~ "/") ~ pkg.strip() ~ ".ever");
-                system(toStringz("ever -ast " ~ expandTilde("~/.evrpkg/pkgs/" ~ pkg.strip() ~ "/") ~ pkg.strip() ~ ".ever"));
+                system(toStringz("ever -e " ~ expandTilde("~/.evrpkg/pkgs/" ~ pkg.strip() ~ "/") ~ pkg.strip() ~ ".ever"));
                 //writeln("ever -ast " ~ expandTilde("~/.evrpkg/pkgs/" ~ pkg.strip() ~ "/") ~ pkg.strip() ~ ".ever");
             } else {
                 continue;

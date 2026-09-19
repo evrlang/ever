@@ -1,0 +1,10 @@
+{
+	"description": "A minimal Repo source, downloader like git clone.",
+	"license": "proprietary",
+	"authors": [
+		"Pouya Mohammadi"
+	],
+	"copyright": "Copyright © 2026, Pouya Mohammadi",
+	"name": "git4clone",
+	"targetType": "library"
+}

@@ -5,5 +5,10 @@
 		"evrlang"
 	],
 	"copyright": "Copyright © 2026, evrlang",
-	"name": "evrpkg"
+	"name": "evrpkg",
+	"dependencies": {
+        "git4clone": {
+            "path": "git4clone"
+        }
+    }
 }

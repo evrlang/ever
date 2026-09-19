@@ -264,7 +264,10 @@ public void interp(Node[] nodes, int mode)
 						writeln("Core fault: `_asin` value must satisfy the following rules [value =< 1, value >= -1]");
 						_abort();
 					}
-				} 
+				} else if(key.func.name == "_atan2")
+				{
+
+				}
 			}
 		} else if (auto key = cast(IfState)io)
 		{
