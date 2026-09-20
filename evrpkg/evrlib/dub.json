@@ -1,0 +1,13 @@
+{
+	"description": "A minimal Library downloader and manager for ever",
+	"license": "proprietary",
+	"authors": [
+		"Pouya Mohammadi"
+	],
+	"copyright": "Copyright © 2026, Pouya Mohammadi",
+	"name": "evrlib",
+	"dependencies": {
+        "git4clone": {
+            "path": "git4clone"
+        }
+}

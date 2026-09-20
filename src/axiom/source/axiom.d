@@ -43,9 +43,12 @@ TextLabel[string] glabel;
 import error;
 bool tick = false;
 bool broke = false;
-int time;
+int time; 
+import std.path;
 //import std.datetime.stopwatch;
 //auto sw = StopWatch(AutoStart.yes);
+import core.sys.posix.dlfcn; //remove this if you compiling in win 
+import std.json;
 public void interp(Node[] nodes, int mode)
 {
 	    //writeln("[INTERP] nodes = ", nodes.length);
@@ -201,6 +204,39 @@ public void interp(Node[] nodes, int mode)
 				} catch(Exception e)
 				{
 					_error("Just put int for `_time`");
+				}
+			} else if (key.name == "_externC")
+			{
+				if (key.arguments != null || key.arguments != "")
+				{
+					string[] argsa1 = Tokenlz(key.arguments);
+				//do it all time for safty
+					string[] argsa = safe_args(map_str, argsa1);
+					if (argsa.length > 1)
+					{
+						void* lib;
+						if (argsa[0].startsWith("everpkg:"))
+						{
+							lib = dlopen(expandTilde("~/.evrpkg/lib/" ~ argsa[0].replace("evrpkg:", "")), RTLD_LAZY);
+						} else {
+							lib = dlopen(expandTilde(argsa[0]).ptr, RTLD_LAZY);
+						}
+						if (lib is null)
+						{
+							_error("Loading the dynamic library was unsuccessful.");
+						}
+						auto symbols = dlsym(lib, "ever_init".ptr);
+						if (symbols is null)
+						{
+							_error("This Dynamic library dosen't build for ever. Use \"EverDynamicBuilder\" or create `ever_init`.");
+						}
+						extern(C) alias Everinit = const(char)* function();
+						auto ever_init = cast(Everinit) symbols;
+						JSONValue libinfo = parseJSON(ever_init().fromStringZ.idup);
+						funcname = libinfo["funcname"].str;
+						// we cant do 1000 time guass for alias.
+						//insted we gonna use FFI (https://github.com/libffi/libffi)
+					}
 				}
 			}
 		} else if (auto key = cast(DefineKeyWordFunc)io ){

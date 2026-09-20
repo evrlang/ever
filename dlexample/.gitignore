@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/dlexample
+dlexample.so
+dlexample.dylib
+dlexample.dll
+libdlexample.a
+dlexample.a
+dlexample.lib
+dlexample-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
