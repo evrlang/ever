@@ -36,6 +36,7 @@ end
 _time 3500
 delegate tick
 	_write ("@RED" + "Hello" + @RESET)
+end
 </code></pre>
 
 # Compile
