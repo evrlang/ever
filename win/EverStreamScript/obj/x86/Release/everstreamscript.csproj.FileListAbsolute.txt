@@ -1,0 +1,4 @@
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\bin\Release\everstreamscript.exe
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\bin\Release\everstreamscript.pdb
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\obj\x86\Release\everstreamscript.exe
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\obj\x86\Release\everstreamscript.pdb

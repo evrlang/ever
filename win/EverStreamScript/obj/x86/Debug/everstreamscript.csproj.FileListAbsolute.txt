@@ -1,0 +1,8 @@
+C:\Users\NIMA\AppData\Local\Temporary Projects\everstreamscript\bin\Debug\everstreamscript.exe
+C:\Users\NIMA\AppData\Local\Temporary Projects\everstreamscript\bin\Debug\everstreamscript.pdb
+C:\Users\NIMA\AppData\Local\Temporary Projects\everstreamscript\obj\x86\Debug\everstreamscript.exe
+C:\Users\NIMA\AppData\Local\Temporary Projects\everstreamscript\obj\x86\Debug\everstreamscript.pdb
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\obj\x86\Debug\everstreamscript.exe
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\obj\x86\Debug\everstreamscript.pdb
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\bin\Debug\everstreamscript.exe
+C:\Users\NIMA\documents\visual studio 2010\Projects\everstreamscript\everstreamscript\bin\Debug\everstreamscript.pdb

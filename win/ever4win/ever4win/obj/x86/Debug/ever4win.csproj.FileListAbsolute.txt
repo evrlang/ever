@@ -1,0 +1,8 @@
+C:\Users\NIMA\AppData\Local\Temporary Projects\ever4win\bin\Debug\ever4win.exe
+C:\Users\NIMA\AppData\Local\Temporary Projects\ever4win\bin\Debug\ever4win.pdb
+C:\Users\NIMA\AppData\Local\Temporary Projects\ever4win\obj\x86\Debug\ever4win.exe
+C:\Users\NIMA\AppData\Local\Temporary Projects\ever4win\obj\x86\Debug\ever4win.pdb
+C:\Users\NIMA\documents\visual studio 2010\Projects\ever4win\ever4win\obj\x86\Debug\ever4win.exe
+C:\Users\NIMA\documents\visual studio 2010\Projects\ever4win\ever4win\obj\x86\Debug\ever4win.pdb
+C:\Users\NIMA\documents\visual studio 2010\Projects\ever4win\ever4win\bin\Debug\ever4win.exe
+C:\Users\NIMA\documents\visual studio 2010\Projects\ever4win\ever4win\bin\Debug\ever4win.pdb
