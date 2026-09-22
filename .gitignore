@@ -22,3 +22,9 @@ docs/
 
 # Code coverage
 *.lst
+a.out
+*.o
+*.so
+*.dll
+*.exe
+*.pdb
