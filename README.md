@@ -74,14 +74,10 @@ dub build
 ```
 
 > **Tip:** If you want to compile without debug symbols and reduce the binary size, use:
+> 
+> ```bash
+> dub build --build=release
+> ```
 
-```bash
-dub build --build=release
-```
-
-That's it! Run: 
-```bash
-./ever -v
-``` to check the result.
 
 ### Continue With [Getting Start](GETSTART.md)
