@@ -1,0 +1,4 @@
+C:\Users\NIMA\ever\win\ever4win\ever4win\bin\Release\ever4win.exe
+C:\Users\NIMA\ever\win\ever4win\ever4win\bin\Release\ever4win.pdb
+C:\Users\NIMA\ever\win\ever4win\ever4win\obj\x86\Release\ever4win.exe
+C:\Users\NIMA\ever\win\ever4win\ever4win\obj\x86\Release\ever4win.pdb

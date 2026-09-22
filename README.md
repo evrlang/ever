@@ -79,10 +79,9 @@ dub build
 dub build --build=release
 ```
 
-That's it! Run:
-
+That's it! Run: 
 ```bash
 ./ever -v
-```
+``` to check the result.
 
-to check the result.
+### Continue With [Getting Start](GETSTART.md)
