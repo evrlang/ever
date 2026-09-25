@@ -7,7 +7,7 @@ using System.IO;
 
 public enum TokType
 {
-    String,
+    Value,
     Func
 }
 
@@ -49,8 +49,20 @@ namespace ever4win
                         if (aa == '\"')
                         {
                             t1 = !t1;
-                            result.Add(current);
-                            current = "";
+                            if (t1 == true)
+                            {
+                                result.Add(current);
+                                current = "";
+                            }
+                            current += aa;
+                            
+
+                            if (t1 == false)
+                            {
+                                result.Add(current);
+                                current = "";
+
+                            }
                         }
                         else if (t1 == true)
                         {
@@ -71,9 +83,24 @@ namespace ever4win
                         result.Add(current);
                     }
 
-                    foreach (string toh in result)
+                    
+                    List<Token> ntok = new List<Token>();
+                    ntok = ever4win.Lexer.ReturnTokens(result);
+                    
+                    //Console.WriteLine("This must be here.");
+                    
+                    List<Node> nast = new List<Node>();
+                    nast = ever4win.Parser.ReturnAST(ntok);
+                    
+                    foreach (Node lj in nast)
                     {
-                        Console.WriteLine(toh);
+                        
+                        if (lj is FunctionDefine)
+                        {
+                            FunctionDefine ll = (FunctionDefine)lj;
+                            
+                            ever4win.FunctionDefineManagment.FuncManager(ll);
+                        }
                     }
                 }
                 fk.Close();

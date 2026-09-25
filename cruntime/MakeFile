@@ -1,0 +1,12 @@
+SCRIPT_VER = 0.0.1
+@echo "Ever Runtime builder MakeFile, Versoin $(SCRIPT_VER)"
+@echo "Building for $(OS)..."
+ifeq ($(OS),Windows_NT)
+	CC = gcc.exe
+	build: cbased.c
+		$(CC) -shared -fPIC -o cbased.lib cbased.c
+else
+	CC = gcc
+	cbased: cbased.c
+		$(CC) -shared -fPIC -o libcbased.so cbased.c
+endif

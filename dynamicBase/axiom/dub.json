@@ -1,0 +1,10 @@
+﻿{
+	"authors": ["Pouya Mohammadi"],
+	"license": "GPL-3.0-only",
+	"copyright": "Copyright © 2026, Pouya Mohammadi",
+	"name": "axiom",
+	"description": "ASTSupport lib for ever.",
+	"targetType": "dynamicLibrary",
+	"dflags": ["-mscrtlib=msvcrt"],
+	"lflags": ["/LIBPATH:C:\\D\\dmd2\\windows\\bin64\\..\\lib64\\mingw", "/LIBPATH:C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.22621.0\\ucrt\\x64", "libcmt.lib", "kernel32.lib", "user32.lib"]
+}
