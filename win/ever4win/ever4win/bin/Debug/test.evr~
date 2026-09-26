@@ -1,0 +1,4 @@
+_write "Hello world!\n"
+_asRed NULL
+_write "It's must be red in ever4win"
+_asDefault NULL

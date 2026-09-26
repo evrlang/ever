@@ -16,4 +16,16 @@ namespace ever4win
             arguments = args;
         }
     }
+    public class DefineWord : Node
+    {
+        public string name;
+        public string type;
+        public string value;
+        public DefineWord(string n, string t, string v)
+        {
+            name = n;
+            type = t;
+            value = v;
+        }
+    }
 }

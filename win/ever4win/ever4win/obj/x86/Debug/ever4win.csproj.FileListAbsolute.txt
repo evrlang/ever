@@ -10,3 +10,4 @@ C:\Users\NIMA\ever\win\ever4win\ever4win\obj\x86\Debug\ever4win.exe
 C:\Users\NIMA\ever\win\ever4win\ever4win\obj\x86\Debug\ever4win.pdb
 C:\Users\NIMA\ever\win\ever4win\ever4win\bin\Debug\ever4win.exe
 C:\Users\NIMA\ever\win\ever4win\ever4win\bin\Debug\ever4win.pdb
+C:\Users\NIMA\ever\win\ever4win\ever4win\obj\x86\Debug\ever4win.csprojResolveAssemblyReference.cache

@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-
+using System.Collections;
 
 public enum TokType
 {
     Value,
-    Func
+    Func,
+    Name,
+    Keyword,
+    Type
 }
+
+
 
 public struct Token
 {
@@ -25,8 +30,10 @@ public struct Token
 
 namespace ever4win
 {
+    
     class Program
     {
+        public static Hashtable mapstr = new Hashtable();
         static void Main(string[] args)
         {
             if (args.Length == 0){
@@ -40,13 +47,20 @@ namespace ever4win
                 StreamReader fk = new StreamReader(args[0]);
                 while (!fk.EndOfStream)
                 {
+                    
                     string txt = fk.ReadLine();
+
+                    if (txt.Trim() == "" || txt.Trim() == "//")
+                    {
+                        continue;
+                    }
                     bool t1 = false;
+                    bool t2 = false;
                     List<string> result = new List<string>();
                     string current = "";
                     foreach (char aa in txt)
                     {
-                        if (aa == '\"')
+                        if (aa == '\"' && t2 == false)
                         {
                             t1 = !t1;
                             if (t1 == true)
@@ -68,11 +82,26 @@ namespace ever4win
                         {
                             current += aa;
                         }
-                        else if (t1 == false && aa == ' ')
+                        else if (t1 == false && aa == ' ' && t2 == false)
                         {
                             result.Add(current);
                             current = "";
                         }
+                        else if (t1 == false && t2 == false && aa == '(' ){
+                            result.Add(current);
+                            current = "";
+                            t2 = true;
+                        }
+                        else if (t2 == true && t1 == false && aa == ')')
+                        {
+                            result.Add(current);
+                            current = "";
+                        }
+                        else if (t2 == true)
+                        {
+                            current += aa;
+                        } 
+                        
                         else
                         {
                             current += aa;
@@ -82,8 +111,12 @@ namespace ever4win
                     {
                         result.Add(current);
                     }
-
-                    
+                    /*
+                    foreach (string k in result)
+                    {
+                        Console.WriteLine(k);
+                    }
+                     */
                     List<Token> ntok = new List<Token>();
                     ntok = ever4win.Lexer.ReturnTokens(result);
                     
@@ -94,12 +127,17 @@ namespace ever4win
                     
                     foreach (Node lj in nast)
                     {
-                        
+                        //Console.WriteLine(lj);
                         if (lj is FunctionDefine)
                         {
                             FunctionDefine ll = (FunctionDefine)lj;
                             
                             ever4win.FunctionDefineManagment.FuncManager(ll);
+                        }
+                        else if (lj is DefineWord)
+                        {
+                            DefineWord la = (DefineWord)lj;
+                            ever4win.DefineWordManager.Run(la);
                         }
                     }
                 }

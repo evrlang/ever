@@ -1,4 +1,3 @@
-_write "Hello world!\n"
-_asRed NULL
-_write "It's must be red in ever4win"
-_asDefault NULL
+_mainWindow ("l1" "Hello to my Page :\cp")
+_label ("l1" "Hello To my first app\nLet's hope all be right forever, like ever :\cp" 10 10)
+_loopWindow "l1"

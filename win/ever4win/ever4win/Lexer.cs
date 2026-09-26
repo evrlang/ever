@@ -16,10 +16,29 @@ namespace ever4win
                 if (ftok.StartsWith("_"))
                 {
                     resu.Add(new Token(ftok, TokType.Func));
-                } else if (ftok.StartsWith("\"")){
+                }
+                else if (ftok.StartsWith("\""))
+                {
                     resu.Add(new Token(ftok, TokType.Value));
                 }
                 else if (ftok == "NULL")
+                {
+                    resu.Add(new Token(ftok, TokType.Value));
+                }
+                else if (ftok.StartsWith("@"))
+                {
+                    resu.Add(new Token(ftok, TokType.Name));
+                }
+                else if (ftok == "gen" || ftok == "generate")
+                {
+                    resu.Add(new Token(ftok, TokType.Keyword));
+                }
+                else if (ftok == "string")
+                {
+                    resu.Add(new Token(ftok, TokType.Type));
+                }
+                else if (ftok == "") continue;
+                else
                 {
                     resu.Add(new Token(ftok, TokType.Value));
                 }
