@@ -66,5 +66,23 @@ namespace ever4win
                 GlobalForm[name].Controls.Add(temp_label);
             }
         }
+
+        public static void rmControl(string name)
+        {
+            
+            if (GlobalForm.ContainsKey(name))
+            {
+                GlobalForm[name].FormBorderStyle = FormBorderStyle.None;
+            }
+            else
+            {
+                ever4win.ErrorManager.Error("The created window value does not exist.");
+            }
+        }
+
+        public static void msgbox(string msgtext)
+        {
+            MessageBox.Show(msgtext);
+        }
     }
 }

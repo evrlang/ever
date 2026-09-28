@@ -9,7 +9,8 @@ namespace ever4win
     {
         public static void FuncManager(FunctionDefine kl)
         {
-            if (kl.funcname == "_write")
+            //Console.WriteLine(ever4win.InterTool.checkFuncName("write", kl.arguments));
+            if (ever4win.InterTool.checkFuncName("write", kl.funcname))
             {
                 if (kl.arguments.StartsWith("\"") && kl.arguments.EndsWith("\""))
                 {
@@ -19,57 +20,57 @@ namespace ever4win
                 {
                     Console.Write(ever4win.Program.mapstr[kl.arguments]);
                 }
-                else ever4win.ErrorManager.Error("`_write`, The requested value was not found");
+                else ever4win.ErrorManager.Error("`write`, The requested value was not found");
             }
-            else if (kl.funcname == "_asRed") {
+            else if (ever4win.InterTool.checkFuncName("asRed", kl.funcname)) {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
             }
-            else if (kl.funcname == "_asWhite")
+            else if (ever4win.InterTool.checkFuncName("asWhite", kl.funcname))
             {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-            else if (kl.funcname == "_asDefault")
+            else if (ever4win.InterTool.checkFuncName("asDefault", kl.funcname))
             {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ResetColor();
                 }
             }
-            else if (kl.funcname == "_asGreen")
+            else if (ever4win.InterTool.checkFuncName("asGreen", kl.funcname))
             {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
             }
-            else if (kl.funcname == "_asMagenta")
+            else if (ever4win.InterTool.checkFuncName("asMagenta", kl.funcname))
             {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                 }
             }
-            else if (kl.funcname == "_asYellow")
+            else if (ever4win.InterTool.checkFuncName("asYellow", kl.funcname))
             {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 }
             }
-            else if (kl.funcname == "_asBlue")
+            else if (ever4win.InterTool.checkFuncName("asBlue", kl.funcname))
             {
                 if (ever4win.InterTool.ArgsAreEmpty(kl.funcname, kl.arguments))
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                 }
             }
-            else if (kl.funcname == "_mainWindow")
+            else if (ever4win.InterTool.checkFuncName("mainWindow", kl.funcname))
             {
                 List<string> a = new List<string>();
                 if (ever4win.InterTool.MakeArgs(kl.arguments, ref a))
@@ -86,15 +87,15 @@ namespace ever4win
                     }
                 }
             }
-            else if (kl.funcname == "_loopWindow")
+            else if (ever4win.InterTool.checkFuncName("loopWindow", kl.funcname))
             {
                 ever4win.Graphics.ShowWin(ever4win.InterTool.EscapeManager(kl.arguments));
             }
-            else if (kl.funcname == "_rmWindow")
+            else if (ever4win.InterTool.checkFuncName("rmWindow", kl.funcname))
             {
                 ever4win.Graphics.removeWin(ever4win.InterTool.EscapeManager(kl.arguments));
             }
-            else if (kl.funcname == "_label")
+            else if (ever4win.InterTool.checkFuncName("label", kl.funcname))
             {
                 List<string> a = new List<string>();
                 if (ever4win.InterTool.MakeArgs(kl.arguments, ref a))
@@ -119,6 +120,14 @@ namespace ever4win
                         ever4win.ErrorManager.Error("`" + kl.funcname + "` has received arguments different from what was expected.");
                     }
                 }
+            }
+            else if (ever4win.InterTool.checkFuncName("noBorder", kl.funcname))
+            {
+                ever4win.Graphics.rmControl(ever4win.InterTool.EscapeManager(kl.arguments));
+            }
+            else if (ever4win.InterTool.checkFuncName("msgBox", kl.funcname))
+            {
+                ever4win.Graphics.msgbox(ever4win.InterTool.EscapeManager(kl.arguments));
             }
         }
     }

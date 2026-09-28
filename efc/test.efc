@@ -1,0 +1,10 @@
+.t
+    [EPOINT]
+        EFC "w"
+        SET "Hello world!"
+        LOADUP
+        EFC "o"
+        VAR 0
+        LOADUP
+    [EPOINTEND]
+.n

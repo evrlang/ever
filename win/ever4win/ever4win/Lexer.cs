@@ -13,7 +13,7 @@ namespace ever4win
             List<Token> resu = new List<Token>();
             foreach (string ftok in toks)
             {
-                if (ftok.StartsWith("_"))
+                if (ftok.StartsWith("_") || ftok.StartsWith("def:"))
                 {
                     resu.Add(new Token(ftok, TokType.Func));
                 }

@@ -1,3 +1,1 @@
-_mainWindow ("l1" "Hello to my Page :\cp")
-_label ("l1" "Hello To my first app\nLet's hope all be right forever, like ever :\cp" 10 10)
-_loopWindow "l1"
+def:msgBox "Hello\nPlease Update this Tool."

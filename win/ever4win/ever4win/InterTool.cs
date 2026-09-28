@@ -33,5 +33,23 @@ namespace ever4win
             save = ever4win.Tokenizer.TokenizerMake(args);
             return true;
         }
+
+        public static bool checkFuncName(string funcname, string src)
+        {
+            //Console.WriteLine("def:" + funcname);
+            //Console.WriteLine(src);
+            if (src == ("_" + funcname))
+            {
+                return true;
+            }
+            else if (src == ("def:" + funcname))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
