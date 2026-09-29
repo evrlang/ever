@@ -1,0 +1,6 @@
+; (C) Pouya Mohammadi, this is not fully support kernel32
+; it just support whats renim use.
+
+LIBRARY kernel32.dll
+EXPORTS
+    ExitProcess

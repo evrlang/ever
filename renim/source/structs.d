@@ -1,14 +1,14 @@
-module tok;
-
-import std.stdio;
+module structs;
 
 enum Types {
     Func,
     Value,
-    Section
+    Section,
+    Epoint,
+    Doer
 }
 
 struct tokens {
-    string vale;
+    string value;
     Types type;
 }
