@@ -33,7 +33,7 @@ void main(string[] argv)
 		system(toStringz("nasm -f win64 " ~ argv[1].replace(".en", ".asm") ~ " -o " ~ argv[1].replace(".en", ".obj")));
 		if (exists(argv[1].replace(".asm", "")))
 		{
-			version(linux) system(toStringz("lld-link "  ~ argv[1].replace(".en", ".obj") ~ " kernel32.lib -entry:_start -subsystem:console -out:" ~ argv[1].replace(".en", "")));
+			version(linux) system(toStringz("lld-link "  ~ argv[1].replace(".en", ".obj") ~ " -entry:_start -subsystem:console -out:" ~ argv[1].replace(".en", "")));
 			version(Windows) system(toStringz("lld-link "  ~ argv[1].replace(".en", ".obj") ~ " kernel32.lib -entry:_start -subsystem:console -out:" ~ argv[1].replace(".en", ".exe")));
 
 		}

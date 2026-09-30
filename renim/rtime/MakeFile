@@ -1,0 +1,4 @@
+CC = gcc
+
+rtime.dll: rtime.c rtime.h
+	$(CC) -fPIC -shared rtime.c -o rtime.dll

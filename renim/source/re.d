@@ -1,7 +1,7 @@
 module renim_main;
 
 import std.stdio, ast, error, escapem, std.conv;
-
+import std.algorithm;
 string renim(Node[] asttree)
 {
     auto erda = new StandardError();
@@ -20,8 +20,6 @@ string renim(Node[] asttree)
                 asm_res ~= "\nsection .everdb\never db \"true\"\nsection .text";
                 intxts = true;
             }
-            else if (af.section_name == ".d") asm_res ~= "\nsection .data";
-            else if (af.section_name == ".db") asm_res ~= "\nsection .bs";
             else {
                 erda.unknown_section(af.section_name);
             }
@@ -29,7 +27,7 @@ string renim(Node[] asttree)
         {
             if (!intxts) erda.wrong_section();
             asm_res ~= "\nglobal _start";
-            version(Windows) asm_res ~= "\nextern ExitProcess";
+            version(Windows) asm_res ~= "\nextern ExitProcess\nextern GetStdHandle\nextern WriteFile";
             asm_res ~= "\n_start:";
             
             point = true;
@@ -66,6 +64,12 @@ string renim(Node[] asttree)
                             erda.notnumber(eout(af.value));
                         }
                     }
+                } else if (lastloadupmode == "w")
+                {
+                    if (eout(af.value) == "%SET")
+                    {
+                        asm_res ~= "\nmov rax, 1\nmov rdi, 1\nmov rsi, gbl\nmov rdx, gbl_len\nsyscall";
+                    }
                 }
             } else if (af.funcname == "VAR")
             {
@@ -73,6 +77,13 @@ string renim(Node[] asttree)
                     global_var = to!int(eout(af.value));
                 } catch (Exception e){
                     erda.notnumber(eout(af.value));
+                }
+            } else if(af.funcname == "SET")
+            {
+                global_set = eout(af.value);
+                if (!asm_res.startsWith("section .data"))
+                {
+                    asm_res = "section .data\ngbl db \"" ~ global_set ~ "\"\n gbl_len db $ - gbl\n" ~ asm_res;
                 }
             }
         }

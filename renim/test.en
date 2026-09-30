@@ -1,0 +1,11 @@
+.t
+    [EPOINT]
+        RENIM "w"
+        SET "Hello world!"
+        LOADUP %SET
+
+        RENIM "e"
+        VAR "0"
+        LOADUP %VAR
+
+    [EPOINTEND]
