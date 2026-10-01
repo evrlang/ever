@@ -1,5 +1,3 @@
-section .data
-    msg db "Hello", 10, 0
 
 section .text
 global main
@@ -8,7 +6,8 @@ extern ExitProcess
 
 main:
     sub rsp, 40
-    lea rcx, msg
+    lea rcx, [rel msg]
+    int 3
     call consoleWrite
     add rsp, 40
     mov rcx, 0
