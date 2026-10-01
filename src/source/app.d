@@ -68,6 +68,11 @@ void main(string[] args)
 	if (args.length < 2){
 		prHelpMenu();
         //prinPanic("WUT");
+
+	}else if (args[1] == "--compile" && args[2].exists())
+	{
+		writeln("Please note that the compiler is currently in " ~ "\033[1m" ~" beta " ~ "\033[0m" ~", and it does not support all functions. It is unstable and is not supported on all platforms.");
+		astSupportCompile(args[2]);
     } else if(args[1] == "-ver=0.0.4" && args[2] == "-e" || args[2] == "--enter"){
         if (exists(args[3])){
 			try {

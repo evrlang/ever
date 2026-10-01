@@ -17,7 +17,7 @@ string renim(Node[] asttree)
         if (auto af = cast(SectionDefine)ast)
         {
             if (af.section_name == ".t") {
-                asm_res ~= "\nsection .everdb\never db \"true\"\nsection .text";
+                asm_res ~= "\nsection .text";
                 intxts = true;
             }
             else {
@@ -26,9 +26,9 @@ string renim(Node[] asttree)
         } else if (auto af = cast(EntryPointDefine)ast)
         {
             if (!intxts) erda.wrong_section();
-            asm_res ~= "\nglobal _start";
-            version(Windows) asm_res ~= "\nextern ExitProcess\nextern GetStdHandle\nextern WriteFile";
-            asm_res ~= "\n_start:";
+            asm_res ~= "\nglobal main";
+            version(Windows) asm_res ~= "\n extern ExitProcess\n extern GetStdHandle\n extern WriteFile";
+            asm_res ~= "\nmain:";
             
             point = true;
         } else if (auto af = cast(DefineFunction)ast)
@@ -83,7 +83,7 @@ string renim(Node[] asttree)
                 global_set = eout(af.value);
                 if (!asm_res.startsWith("section .data"))
                 {
-                    asm_res = "section .data\ngbl db \"" ~ global_set ~ "\"\n gbl_len db $ - gbl\n" ~ asm_res;
+                    asm_res = "section .data\ngbl db \"" ~ global_set ~ "\", 10\n gbl_len db $ - gbl\n" ~ asm_res;
                 }
             }
         }

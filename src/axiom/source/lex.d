@@ -129,9 +129,9 @@ Tokens[] lexer(string lineo)
 		} else if (tok == "=" || tok == "==" || tok == ">" || tok == "<")
 		{
 			result ~= Tokens(Token.Oprators, tok);
-		} else if (tok.startsWith("_"))
+		} else if (tok.startsWith("_") || tok.startsWith("def:"))
 		{
-			lastfunc = tok;
+			lastfunc = tok.replace("def:", "_");
 			funcag = true;
 			continue;
 		} else if(tok.startsWith("\"") && tok.endsWith("\"")){

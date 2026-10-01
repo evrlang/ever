@@ -39,9 +39,9 @@ Tokens[] slexer(string lineo)
 		} else if (tok == "=" || tok == "==" || tok == ">" || tok == "<")
 		{
 			result ~= Tokens(Token.Oprators, tok);
-		} else if (tok.startsWith("_"))
+		} else if (tok.startsWith("_") || tok.startsWith("def:"))
 		{
-			lastfunca = tok;
+			lastfunca = tok.replace("def:", "_");
 			funcaag = true;
 			continue;
 		} else if(tok.startsWith("\"") && tok.endsWith("\"")){

@@ -52,3 +52,36 @@ void astSupportLine(string li, int mode)
 			//writeln(lexer_result);
 	interp(parser_result, 0);
 }
+
+
+void astSupportCompile(string liq)
+{
+    string target = liq.replace(".evr", "").replace(".ever", "");
+    auto fileline = readText(liq).splitLines();
+    Node[] gb;
+        foreach(li; fileline)
+        {
+            //writeln(ccp, li);
+            if (ccp)
+            {
+                if (li.startsWith("*#"))
+                {
+                    ccp = false;
+                    continue;
+                } else continue;
+            }
+            if (li.startsWith("#*")){
+                ccp = true;
+                continue;
+            }
+            if (li.startsWith("#")) continue;
+            if (li.startsWith("//")) continue;
+            
+            Tokens[] tokenlist = lexer(li);
+			//writeln(tokenlist);
+			gb = parser(tokenlist);
+			//writeln(parser_result);
+            //if (mode == 1) writeln(parser_result);
+        }
+        convert(gb, target);
+}
