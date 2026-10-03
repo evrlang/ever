@@ -80,4 +80,4 @@ dub build
 > ```
 
 
-### Continue With [Getting Start](GETSTART.md)
+### Continue With [Getting Start](docs/GETSTART.md)
