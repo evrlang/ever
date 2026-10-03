@@ -9,7 +9,7 @@ curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash
 ```
 > Make sure to read [this](docs/windows-development.md) before running the Windows version of Ever.
 
-<h1 style="font-weight:bold;"> ever Programming Language</h1>
+<h1 style="font-weight:bold;"> Ever Programming Language</h1>
 
 <h1 style="font-weight:bold;">Why ever?</h1>
 We all love C, but at the same time, it's difficult to use in projects and working with pointers makes many people die when writing it. But the goal of ever is almost the same. Basically, ever wants to have a simple and functional syntax like Turbo C, easy to understand and work with, but in a modern environment.
