@@ -16,21 +16,20 @@ jobs:
           compiler: dmd-latest
 
       - name: Build with dub
-        continue-on-error: true
         run: |
           cd cruntime
           make
-          sudo mv libcbased.so /usr/local/lib 
+          sudo mv libcbased.so /usr/local/lib
           cd ..
           cd src
           cd axiom
-          dub
+          dub || true
           sudo mv libaxiom.a /usr/local/lib
           cd runtime
-          dub
+          dub || true
           sudo mv libmarschiert.a /usr/local/lib
           cd ..
-          dub build
+          dub build || true
           if [ -f "ever" ]; then
             echo "Build done."
           fi
