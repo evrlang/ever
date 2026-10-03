@@ -17,7 +17,8 @@ jobs:
 
       - name: Build with dub
         run: |
-          dub build --build=release
+          cd src
+          dub build
           if [ -f "ever" ]; then
             echo "Build done."
           fi
