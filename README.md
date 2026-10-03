@@ -7,6 +7,7 @@
 ```bash
 curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash
 ```
+> Make sure to read [this](docs/windows-development.md) before running the Windows version of Ever.
 
 <h1 style="font-weight:bold;"> ever Programming Language</h1>
 
