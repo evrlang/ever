@@ -1,387 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eko Programming Language</title>
-    <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-            background: #f4f2fa;
-            color: #1e1a2b;
-            line-height: 1.7;
-            padding: 18px;
-        }
-        a {
-            color: red;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+    <meta charset="utf-8">
+<title>Ever Programming Language | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ever-website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark-Multi-Column-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
 
-        /* ===== CONTAINER ===== */
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 30px 35px;
-            border-radius: 10px;
-            border: 1px solid #d9cdf0;
-            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.08);
-        }
-
-        /* ===== HEADER ===== */
-        .logo {
-            font-size: 44px;
-            font-weight: 800;
-            color: #1e1a2b;
-            letter-spacing: -1px;
-            border-bottom: 4px solid red;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
-        }
-        .logo span {
-            color: red;
-        }
-        .logo small {
-            font-size: 18px;
-            font-weight: 400;
-            color: red;
-            margin-left: 14px;
-        }
-        .tagline {
-            font-size: 18px;
-            color: red;
-            background: #f3effb;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border-left: 5px solid red;
-            margin-bottom: 28px;
-        }
-
-        /* ===== NAV ===== */
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 22px;
-            margin: 16px 0 26px 0;
-            padding: 10px 0;
-            border-top: 1px solid #ede7f6;
-            border-bottom: 1px solid #ede7f6;
-        }
-        .nav a {
-            font-weight: 600;
-            font-size: 15px;
-            color: red;
-        }
-        .nav a:hover {
-            color: red;
-        }
-
-        /* ===== BUTTON ===== */
-        .btn {
-            display: inline-block;
-            background: red;
-            color: #fff;
-            padding: 8px 26px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 15px;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: red;
-            text-decoration: none;
-        }
-        .btn-outline {
-            background: transparent;
-            color: red;
-            border: 2px solid #7c3aed;
-        }
-        .btn-outline:hover {
-            background: red;
-            color: #fff;
-        }
-
-        /* ===== GRID ===== */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 28px 0;
-        }
-        .box {
-            background: #f8f6fc;
-            padding: 18px 20px;
-            border-radius: 8px;
-            border: 1px solid #e6def5;
-        }
-        .box h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: red;
-        }
-        .box ul {
-            list-style: none;
-            padding: 0;
-        }
-        .box ul li::before {
-            content: "◆ ";
-            color: red;
-            font-weight: bold;
-        }
-        .box ul li {
-            margin-bottom: 4px;
-            font-size: 14px;
-        }
-
-        /* ===== CODE ===== */
-        .code-block {
-            background: #1c1828;
-            color: #d4caf0;
-            padding: 14px 18px;
-            border-radius: 6px;
-            font-family: "Courier New", monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            direction: ltr;
-            text-align: left;
-            margin: 14px 0;
-            border-left: 4px solid red;
-        }
-        .code-block .cmt { color: #6a5f8a; }
-        .code-block .kw  { color: #b794f4; }
-        .code-block .str { color: #a6e3a1; }
-        .code-block .fn  { color: #89b4fa; }
-
-        /* ===== BADGE ===== */
-        .badge {
-            display: inline-block;
-            background: red;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            margin-top: 35px;
-            padding-top: 18px;
-            border-top: 1px solid #e6def5;
-            font-size: 13px;
-            color: #7a6a99;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .footer a {
-            color: red;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 650px) {
-            .grid { grid-template-columns: 1fr; }
-            .container { padding: 18px; }
-            .logo { font-size: 30px; }
-        }
-
-        /* ===== STATUS BOX ===== */
-        .status {
-            background: #f3effb;
-            padding: 12px 18px;
-            border-radius: 8px;
-            border: 1px solid #d9cdf0;
-            margin: 18px 0;
-            font-size: 14px;
-        }
-        .status strong {
-            color: red;
-        }
-
-        /* ===== VERSION ===== */
-        .version-tag {
-            background: #ede7f6;
-            color: #4b2d7a;
-            padding: 2px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-    </style>
+<meta property="og:title" content="Ever Programming Language">
+<meta property="og:description" content="Simple, human-friendly like good old TurboC.">
+<meta property="og:image" content="https://evrlang.github.io/ever/everlogo.jpg">
+<meta property="og:url" content="https://evrlang.github.io/ever/">
+<link rel="icon" type="image/jpg" href="everlogo.jpg">
 </head>
+
 <body>
-
-<div class="container">
-
-    <!-- ===== HEADER ===== -->
-    <div class="logo">
-        <img src="https://raw.githubusercontent.com/ekolang/eko/main/eko.jpg" height="70" width="70"/>
-        <small>v0.0.3-alpha</small>
-        <span style="float:right; font-size:14px; font-weight:400; background:#ede7f6; padding:2px 14px; border-radius:20px;">
-             alpha
-        </span>
-    </div>
-
-    <div class="tagline">
-        A simple, fast, and systems-level programming language — for modern and older machines.
-    </div>
-
-    <!-- ===== NAV ===== -->
-    <div class="nav">
-        <a href="https://pouya1dev.github.io/simple/index.html">Home</a>
-        <a href="https://pouya1dev.github.io/simple/Docs.html">Docs</a>
-        <a href="https://pouya1dev.github.io/simple/Examples.html">Examples</a>
-        <a href="https://github.com/pouya1dev/lpa/releases">Download</a>
-        <a href="https://github.com/ekolang/eko">GitHub</a>
-        <a href="https://pouya1dev.github.io/simple/Community.html">Community</a>
-        <a href="https://github.com/pouya1dev/lpa/archive/refs/tags/alpha-0.0.3.tar.gz">Source code</a>
-    </div>
-
-    <!-- ===== STATUS ===== -->
-    <div class="status">
-        <strong>Alpha Status</strong> – This project is in active development.
-        It's full of bugs, not production-ready, and more educational than industrial.
-        Use it for learning and testing new features.
-    </div>
-
-    <!-- ===== GRID ===== -->
-    <div class="grid">
-
-        <div class="box">
-            <h3>Quick Install</h3>
-            <p style="font-size:14px; margin-bottom:8px;">
-                One-liner for Linux / macOS:
-            </p>
-            <div class="code-block" style="font-size:13px; padding:10px 14px;">
-                curl -sL https://raw.githubusercontent.com/ekolang/eko/main/install.sh | bash
-            </div>
-            <p style="font-size:13px; margin-top:8px;">
-                Windows: download <strong>eko-setup.exe</strong>
-            </p>
-            <p style="font-size:13px; margin-top:6px;">
-                <span class="badge">GPL-3.0</span> &nbsp; <span class="version-tag">D 98.9%</span> <span class="version-tag">Nim</span>
-            </p>
-        </div>
-
-        <div class="box">
-            <h3>Hello World</h3>
-            <div class="code-block" style="font-size:13px; padding:12px 16px;">
-                <span class="kw">generate</span> <span class="fn">main</span>() { <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">write</span>(<span class="str">"Hello World!\n"</span>); <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">0</span>; <br>
-                }
-            </div>
-            <p style="font-size:13px; margin-top:6px;">
-                <strong>→</strong> "Hello World!"
-            </p>
-        </div>
-
-    </div>
-
-    <!-- ===== WHY P/ ===== -->
-    <div style="margin: 22px 0 10px 0;">
-        <h3 style="font-size:20px; color:#4b2d7a;">Why P/?</h3>
-        <p style="font-size:14px; color:#2d2440;">
-            We all love C, but it's hard to use in large projects and pointers make many people suffer.
-            The goal of Eko is the same as C — systems-level control — but with a simple, human-friendly syntax,
-            inspired by Turbo C, and designed for a modern workflow.
-        </p>
-    </div>
-
-    <!-- ===== FEATURES ===== -->
-    <div style="margin: 18px 0 12px 0;">
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; font-size:14px;">
-            <div style="background:#f4f0fa; padding:12px 16px; border-radius:8px; border:1px solid #e6def5;">
-                <strong>Fast</strong><br>
-                Compiles to native machine code via NASM + LD
-            </div>
-            <div style="background:#f4f0fa; padding:12px 16px; border-radius:8px; border:1px solid #e6def5;">
-                <strong>Simple</strong><br>
-                Clean syntax, easy to read and learn
-            </div>
-            <div style="background:#f4f0fa; padding:12px 16px; border-radius:8px; border:1px solid #e6def5;">
-                <strong>Self-contained</strong><br>
-                Single binary, no external dependencies
+    <nav class="navbar navbar-expand-md bg-body" style="display: flex;">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="assets/img/Picsart_26-10-03_10-47-31-678-removebg-preview.png" width="50" height="19"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#"><strong>Home</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="download.html">Download</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/evrlang/ever/discussions">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
+    <div data-aos="fade-up" id="main" style="display: flex;   justify-content: center; /* افقی */   align-items: center;     /* عمودی */   height: 100vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xl-6">
+                    <div style="height: 100%; margin-top: 20px;">
+                        <h2><strong>Ever</strong> Programming Language</h2>
+                        <p>Simple, human-friendly like good old TurboC.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div style="height: 100%;">
+                        <div>
+                            <div style="display: flex;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-box-arrow-in-up-left" style="padding: 5px;font-size: 29px;">
+                                    <path fill-rule="evenodd" d="M9.636 13.5a.5.5 0 0 1-.5.5H2.5A1.5 1.5 0 0 1 1 12.5v-10A1.5 1.5 0 0 1 2.5 1h10A1.5 1.5 0 0 1 14 2.5v6.636a.5.5 0 0 1-1 0V2.5a.5.5 0 0 0-.5-.5h-10a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h6.636a.5.5 0 0 1 .5.5"></path>
+                                    <path fill-rule="evenodd" d="M5 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1H6.707l8.147 8.146a.5.5 0 0 1-.708.708L6 6.707V10.5a.5.5 0 0 1-1 0z"></path>
+                                </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-clipboard" style="padding: 5px;font-size: 29px;">
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"></path>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"></path>
+                                </svg></div>
+                            <div style="background-color: lightgray; height: 1px; width: 100%;"></div><pre><code class="language-python">gen string @name def:getInput "Whats your name?"
+if (@name == "Pouya")
+    write ("Nice to meet you, " + @name)
+end
+</code></pre>
 
-    <!-- ===== MORE EXAMPLES ===== -->
-    <div style="background:#f8f6fc; padding:16px 20px; border-radius:8px; margin:22px 0 12px 0; border:1px solid #e6def5;">
-        <h3 style="font-size:17px; color:#4b2d7a;">More Examples</h3>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:10px;">
-
-            <div>
-                <div class="code-block" style="font-size:12px; padding:10px 14px;">
-                    <span class="kw">generate string</span> -v:name[] = <span class="str">"World"</span>; <br>
-                    <span class="kw">generate</span> <span class="fn">main</span>() { <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">write</span>(<span class="str">"Hello "</span> + -v:name + <span class="str">"\n"</span>); <br> <span> & </span><span class="kw">return</span> <span class="str">0</span>; <br>
-                    }
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div>
-                <div class="code-block" style="font-size:12px; padding:10px 14px;">
-                    <span class="kw">generate int</span> --value:x = <span class="str">10</span> <br>
-                    
-                    <span class="kw">generate</span> <span class="fn">main</span>() { <br>
-                    
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">write</span>(<span class="str">"x = "</span> + -v:x + <span class="str">"\n"</span>); <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> (-v:x > <span class="str">5</span>): <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">write</span>(<span class="str">"Bigger\n"</span>); <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;end; <br>
-                    }
+        </div>
+    </div>
+    <div style="padding: 10px;">
+        <div class="text-center" style="display: flex;">
+            <h4 class="text-center"><br><strong>Install it directly</strong></h4><img src="assets/img/Tux.svg.webp" width="50" height="57" style="margin-left: auto;">
+        </div>
+        <div style="display: flex;"></div>
+        <div style="background-color: lightgray; height: 1px; width: 100%;"></div><pre><code class="language-sh">curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash</code></pre>
+<script>hljs.highlightAll();</script>
+    </div>
+    <div style="padding: 10px;">
+        <div id="card">
+            <h3>Read Fast</h3>
+            <p>Ever is easy to read and understand thanks to its simple, well-defined components. With even a little programming experience, you can easily tell what a program does just by looking at its Ever code.</p>
+        </div>
+    </div>
+    <div style="padding: 10px;">
+        <div id="card">
+            <h3>Write Fast</h3>
+            <p>Writing code in Ever is fast. Unlike C#, you don't have to memorize endless function names or rely on autocomplete — Ever keeps everything simple <br>for you.</p>
+        </div>
+    </div>
+    <footer class="text-white bg-dark">
+        <div class="container py-4 py-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
+                    <h3 class="fs-6 text-white">Ever</h3>
+                    <ul class="list-unstyled">
+                        <li><a class="link-light" href="download.html">Download Ever</a></li>
+                        <li><a class="link-light" href="#"></a></li>
+                        <li><a class="link-light" href="#">Learn Ever</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
+                    <h3 class="fs-6 text-white">About</h3>
+                    <ul class="list-unstyled">
+                        <li></li>
+                        <li><a class="link-light" href="https://github.com/evrlang/ever/discussions/2">How can I contribute?</a></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
+                    <h3 class="fs-6 text-white">Source code</h3>
+                    <ul class="list-unstyled">
+                        <li><a class="link-light" href="#">Github</a></li>
+                        <li><a class="link-light" href="#">Github Pouya1dev</a></li>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
-
+            <hr>
+            <div class="d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">Copyright © 2026 Ever Programming Language.</p>
+            </div>
         </div>
-
-        <p style="font-size:13px; margin-top:10px;">
-            More examples in <strong>src/examples/</strong> &nbsp;·&nbsp;
-            <a href="#">Full Documentation →</a>
-        </p>
-    </div>
-
-    <!-- ===== DOWNLOAD ===== -->
-    <div style="background:#ede7f6; padding:18px 22px; border-radius:8px; margin:20px 0 10px 0; text-align:center;">
-        <span style="font-size:18px; font-weight:600; color:#3b2f5a;"> Get Started</span>
-        <br><br>
-        <a href="https://github.com/pouya1dev/lpa/releases" class="btn">Linux x64</a>
-        <a href="#" class="btn btn-outline" style="margin:0 8px;">Windows (Coming soon)</a>
-        &nbsp;&nbsp;
-        <span style="font-size:13px; color:#6b5b8a;">
-            or build from <a href="https://github.com/pouya1dev/lpa">source</a>
-        </span>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
-    <div class="footer">
-        <div>
-            © 2026 – <a href="#">Eko Language</a> &nbsp;·&nbsp;
-            <a href="https://github.com/pouya1dev/lpa">GitHub</a>
-        </div>
-        <div>
-            <a href="#">Docs</a> &nbsp;·&nbsp;
-            <a href="#">Examples</a> &nbsp;·&nbsp;
-            <a href="#">Releases</a> &nbsp;·&nbsp;
-            <span style="color:#7a6a99;">GPL-3.0</span>
-        </div>
-    </div>
-
-</div>
-
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
