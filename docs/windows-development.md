@@ -10,4 +10,4 @@ Unfortunately, I lack the funds for repairs; my online research suggests there i
 
 Since I also cannot afford a new laptop, I have no choice but to halt development of the Windows version for now.
 
-ِYou can read more about Nvidia Bumpgate from [Here](https://www.badcaps.net/forum/troubleshooting-hardware-devices-and-electronics-theory/troubleshooting-laptops-tablets-and-mobile-devices/83833-nvidia-bumpgate)
+You can read more about Nvidia Bumpgate from [Here](https://www.badcaps.net/forum/troubleshooting-hardware-devices-and-electronics-theory/troubleshooting-laptops-tablets-and-mobile-devices/83833-nvidia-bumpgate)
