@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Test
-      run: |
-        echo "Test ever workflow."
+        run: |
+          echo "Test ever workflow."
