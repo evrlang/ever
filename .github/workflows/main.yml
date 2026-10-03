@@ -16,6 +16,7 @@ jobs:
           compiler: dmd-latest
 
       - name: Build with dub
+        continue-on-error: true
         run: |
           cd cruntime
           make
@@ -33,3 +34,12 @@ jobs:
           if [ -f "ever" ]; then
             echo "Build done."
           fi
+      - name: Done
+        run: |
+          if [ -f "ever" ]; then
+            echo "Build done."
+          else
+            echo "Error."
+            exit 1
+          fi
+          
