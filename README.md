@@ -48,7 +48,7 @@ To compile Ever, you first need `gcc`, `make`, `dmd` (D Compiler), and `dub` ins
 
 Download the source code from the releases and unzip it.
 
-Then, go to the `cruntime` folder using `cd` and run:
+Then, go to the `evrlib` folder using `cd` and run:
 
 ```bash
 make

@@ -17,7 +17,7 @@
 
 `git clone https://github.com/evrlang/ever`
 
-As the first step after cloning the source code from GitHub using the command above, navigate to the `cruntime` directory and execute the Makefile using the following command.
+As the first step after cloning the source code from GitHub using the command above, navigate to the `evrlib` directory and execute the Makefile using the following command.
 
 `make cbased`
 

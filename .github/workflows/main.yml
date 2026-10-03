@@ -17,7 +17,7 @@ jobs:
 
       - name: Build with dub
         run: |
-          cd cruntime
+          cd evrlib
           make
           sudo mv libcbased.so /usr/local/lib
           cd ..
