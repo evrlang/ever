@@ -1,0 +1,65 @@
+.navbar {
+  background-color: #f60035 !important;
+  position: fixed;
+  color: white !important;
+  z-index: 1000;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+a {
+  color: white !important;
+}
+
+img {
+  width: 50px;
+}
+
+#main {
+  /*margin-top: 70px;*/
+  height: 80vh;
+  width: 100vw;
+}
+
+#as {
+  color: blue !important;
+}
+
+p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#download-linux {
+  display: none;
+}
+
+#download-win {
+  display: none;
+}
+
+#download-android {
+  display: none;
+}
+
+#plt-2 {
+  /*border: solid 1px lightgray;*/
+  /*border-radius: 10px;*/
+  margin: 10px;
+  padding: 5px;
+}
+
+p {
+}
+
+#assaa {
+  width: 90px;
+}
+
+#card {
+  border: solid 1px lightgray;
+  padding: 10px;
+  border-left: solid 5px red;
+}
+
