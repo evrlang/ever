@@ -25,6 +25,7 @@ jobs:
           cd axiom
           dub || true
           sudo mv libaxiom.a /usr/local/lib
+          cd ..
           cd runtime
           dub || true
           sudo mv libmarschiert.a /usr/local/lib
