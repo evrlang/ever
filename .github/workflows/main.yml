@@ -1,4 +1,5 @@
 name: Build ever
+
 on:
   push:
   pull_request:
@@ -7,14 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Test
+      - name: Install DMD
+        uses: dlang-community/setup-dlang@v2
+        with:
+          compiler: dmd-latest
+
+      - name: Build with dub
         run: |
-          sudo apt install dmd
-          cd src
-          dub
+          dub build --build=release
           if [ -f "ever" ]; then
-            echo "Build Done."
+            echo "Build done."
           fi
