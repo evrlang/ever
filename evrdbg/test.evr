@@ -1,0 +1,2 @@
+def:write "Hello world"
+def:write "Bye"

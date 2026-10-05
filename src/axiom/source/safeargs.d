@@ -18,7 +18,7 @@ string[] safe_args(ref string[string] map, string[] current)
             {
                 _error("\"\033[32m\033[1m" ~ ol.replace("@", "") ~ "\033[0m\"" ~ " does not exist in any of the data types or is undefined.");
             }
-            res ~= ol;
+            res ~= ol.replace("\\cp", ")").replace("\\p", "(").replace("\\b", "\"");
         }
     }
     return res;

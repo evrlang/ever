@@ -1,0 +1,3 @@
+def:mainWindow ("l1" "Hello world")
+def:label ("Hello :\cp" "center" "l1")
+def:loopWindow "l1"

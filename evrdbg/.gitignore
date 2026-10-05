@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/evrdbg
+evrdbg.so
+evrdbg.dylib
+evrdbg.dll
+libevrdbg.a
+evrdbg.a
+evrdbg.lib
+evrdbg-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

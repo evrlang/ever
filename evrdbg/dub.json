@@ -1,0 +1,9 @@
+{
+	"description": "Debugger for Ever",
+	"license": "GPL-3.0-only",
+	"authors": [
+		"Pouya Mohammadi"
+	],
+	"copyright": "Copyright © 2026, Pouya Mohammadi",
+	"name": "evrdbg"
+}
