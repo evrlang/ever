@@ -17,20 +17,16 @@ jobs:
 
       - name: Build with dub
         run: |
-          cd evrlib
+          cd evrlib/cbased
           make
           sudo mv libcbased.so /usr/local/lib
-          cd ..
+          cd ../..
           cd src
           cd axiom
           dub || true
           sudo mv libaxiom.a /usr/local/lib
           cd ..
-          cd runtime
-          dub || true
-          sudo mv libmarschiert.a /usr/local/lib
-          cd ..
           dub build || true
-          if [ -f "ever" ]; then
+          if [ -f "evr" ]; then
             echo "Build done."
           fi
