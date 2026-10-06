@@ -2,7 +2,9 @@ module astsupport;
 
 import std.stdio;
 import axiom;
-import marschiert, std.file, std.string, std.algorithm;
+import runtime;
+
+import std.file, std.string, std.algorithm;
 
 bool ccp = false;
 void astSupportRun(string filepath, int mode)
@@ -39,7 +41,7 @@ void astSupportRun(string filepath, int mode)
             map_str["@GREEN"] = "\033[32m";
 			interp(parser_result, 0);
         }
-    } else prinPanic(kodes._file_faild, "ever ast-mode");
+    }
 }
 
 void astSupportLine(string li, int mode)

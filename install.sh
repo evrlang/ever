@@ -1,38 +1,34 @@
-echo "eko Installer - version 0.0.1"
-wget https://github.com/ekolang/eko/archive/refs/tags/alpha-0.0.4.zip
-if [ -d "alpha-0.0.4"  ]; then
-	echo "Remove old install progress cache and files for clean install?"
-	echo "[Y][N]"
-	read answer
-	if [ "$answer" == "Y" ]; then
-		rm -r alpha-0.0.4
-		mkdir alpha-0.0.4
-	else
-		echo "Continue without remove anything."
-	fi
-else
-	mkdir alpha-0.0.4
+#!/bin/bash
+
+T=$(which dialog)
+
+if [ -z "$T" ]; then
+	#support ubuntu-apt based system.
+	sudo apt install dialog
 fi
-unzip alpha-0.0.4.zip -d alpha-0.0.4/
-cd alpha-0.0.4/eko-alpha-0.0.4/src/runtime
-dub
-sudo mv libmarschiert.a /usr/local/lib
-cd ..
-cd axiom
-dub
-sudo mv libaxiom.a /usr/local/lib
-cd ..
-dub
-if [ -f "eko" ]; then
-	echo -e "\033[32mBuild Done. do you want to move it to usr/local/bin?"
-	echo -e "\033[0m[Y][N]"
-	read ans
-	if [ "$ans" == "Y" ]; then
-		sudo mv eko /usr/local/bin
-		echo "progress finished. (2)BuildDone."
+
+clear
+
+dialog --msgbox $'Welcome to Ever Programming language installer for linux!\nPleases not that installer now support only apt-based system.\nRead: https://evrlang.github.io/ever/wiki/tools/installer.html' 10 60 
+clear
+
+if [ -f "/usr/local/lib/libcbased.so" ]; then
+	if [ -f "/usr/local/lib/libaxiom.a" ]; then
+		cd src
+		dub
+		if [ -f "evr" ]; then
+			echo "(1) Build Done."
+		else
+			echo "(1) Build done with errors."
+		fi
+		#sudo mv evr /usr/local/bin
 	else
-		echo "progress finished. (1)BuildDone."
+		cd src/axiom
+		dub
+		sudo mv libaxiom.a /usr/local/lib
 	fi
-else
-	echo "Faild To compile eko. (0)Build."
+else 
+	cd evrlib
+	make
+	sudo mv libcbased.so /usr/local/lib
 fi

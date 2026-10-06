@@ -1,8 +1,0 @@
-gen string @useri _getInput "H for Help > "
-_time 4000
-delegate tick
-    if (@useri == "g")
-        _write "Hello to help"
-    end
-    _break NULL
-end

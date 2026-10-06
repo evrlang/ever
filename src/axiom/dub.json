@@ -10,7 +10,7 @@
 	],
 	"description": "ASTSupport lib for ever.",
 	"dependencies": {
-		"arsd-official:minigui": "~>12.1.2"
+		"arsd-official:minigui": "~>10.7.0"
 	},
 	"targetType": "library"
 }

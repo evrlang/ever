@@ -5,20 +5,14 @@
 	],
 	"license": "proprietary",
 	"copyright": "Copyright © 2026, https://github.com/everlang, https://github.com/pouya1dev",
-	"name": "ever",
+	"name": "evr",
 	"libs": [
-		"marschiert",
 		"axiom"
 	],
-	"description": "A minimal D application.",
+	"description": "A Tool for work and compile Ever source code.",
 	"dependencies": {
 		"axiom": {
 			"path": "./axiom/"
-		},
-		"handy-httpd": "~>8.7.0",
-		"arsd-official:minigui": "~>12.1.2",
-		"marschiert": {
-			"path": "./runtime/"
 		}
 	},
 	"importPaths": [
