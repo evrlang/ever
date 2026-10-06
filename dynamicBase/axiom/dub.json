@@ -1,8 +1,0 @@
-﻿{
-	"authors": ["Pouya Mohammadi"],
-	"license": "GPL-3.0-only",
-	"copyright": "Copyright © 2026, Pouya Mohammadi",
-	"name": "axiom",
-	"description": "ASTSupport lib for ever.",
-	"targetType": "library",
-}
