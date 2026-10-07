@@ -50,11 +50,18 @@ void main(string[] args)
 			exit(1);
 		}
 		astSupportRun(args[2], 0);
+	} else if (args[1] == "-d" || args[1] == "--debug"){
+		if (args.length > 1 && exists(args[2])){
+			debg(readText(args[2]), 1);
+		} else {
+			writeln(red ~ bold ~ "Error:" ~ reset ~" The imported file does not exist.");
+			exit(1);
+		}
 	} else {
 		prHelpMenu();
 		writeln(red ~ bold ~ "Error:" ~ reset ~" There is no comment like the one you entered.");
 		exit(1);
-	}
+	} 
 }
 
 private void ierror(string msg)

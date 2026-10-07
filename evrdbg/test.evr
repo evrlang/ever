@@ -1,2 +1,2 @@
 def:write "Hello world"
-def:write "Bye"
+def:write " Bye"
