@@ -96,6 +96,15 @@ Node[] parser(Tokens[] tokens){
 							_error("Can't use `" ~ bk.args[1].valu ~ "` for this types. (string)");
 						}
 					}
+				} else if (bk.args.length > 1 && bk.args[0].type == Token.Func && bk.args[0].valu == "_while"){
+					if (bk.args[1].type == Token.Func){
+						Tokens[] ap = lexer(bk.args[1].valu ~ " " ~ bk.args[2].valu);
+						result ~= new WhileWithFuncDefine(bk.args[1].valu, ap, bk.bod);
+						continue;
+					} else if (bk.args[1].valu == "true"){
+						result ~= new WhileDefine(true, bk.bod);
+						continue;
+					}
 				}
 				//writeln(resulta);
 				if (resulta)

@@ -177,6 +177,15 @@ public void interp(Node[] nodes, int mode)
 				{
 					_error("Just put int for `_time`");
 				}
+			} else if (key.name == "_graph"){
+				evrlib_initgraphic(toStringz(escapeManager(key.arguments.replace("\"", ""))));
+				while(!evrlib_ifwin()){
+					evrlib_draw();
+					evrlib_cleans(2);
+					evrlib_text(toStringz("Hello"), 100, 100, 20, 1);
+					evrlib_end();
+				}
+				evrlib_fidraw();
 			} /*else if (key.name == "_externC")
 			{
 				if (key.arguments != null || key.arguments != "")

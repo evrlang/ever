@@ -1,5 +1,5 @@
 module ast;
-import std.stdio;
+import std.stdio, structer;
 
 struct OpratorSt {
 	static int equal = 1;
@@ -86,5 +86,25 @@ class DefineDelegate : Node {
 	{
 		this.event_name = event_name;
 		this._body = _body;
+	}
+}
+
+class WhileDefine : Node {
+	bool status;
+	Node[] bodya;
+	this(bool status, Node[] bodya)
+	{
+		this.status = status;
+		this.bodya = bodya;
+	}
+} 
+class WhileWithFuncDefine: Node {
+	string funcname;
+	Tokens[] args;
+	Node[] bodya;
+	this(string funcname, Tokens[] args, Node[] bodya){
+		this.funcname = funcname;
+		this.args = args;
+		this.bodya = bodya;
 	}
 }

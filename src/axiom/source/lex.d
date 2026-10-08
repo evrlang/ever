@@ -22,6 +22,7 @@ bool dg = false; // for delegate, to discover if we are in delegate or not.
 	string lastfunc;
 	string dgate_bol;
 	bool if_ = false;
+	bool while_ = false;
 	//bool kl;
 	bool ini = true;
 Tokens[] lexer(string lineo)

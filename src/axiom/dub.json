@@ -6,7 +6,7 @@
 	"copyright": "Copyright © 2026, Pouya Mohammadi",
 	"name": "axiom",
 	"libs": [
-		"cbased"
+		"cbased", "evrlib"
 	],
 	"description": "ASTSupport lib for ever.",
 	"dependencies": {
