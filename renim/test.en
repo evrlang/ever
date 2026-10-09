@@ -1,11 +1,16 @@
 .t
     [EPOINT]
+        SET "Hello world"
         RENIM "w"
-        SET "Hello world!"
         LOADUP %SET
-
+        FUNCNUM "2"
+        RENIM "g"
+        [START]
+            RENIM "w"
+            LOADUP %SET
+        [END]
+        LOADUP %NULL
         RENIM "e"
         VAR "0"
         LOADUP %VAR
-
-    [EPOINTEND]
+    [ENDPOINT]

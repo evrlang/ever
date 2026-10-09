@@ -27,3 +27,14 @@ class SectionDefine : Node {
 class EntryPointDefine : Node {
     //noting.
 }
+
+class EndEntryPointDefine : Node {
+    //noting
+}
+
+class BlockDefine : Node {
+    Node[] bd;
+    this(Node[] bd){
+        this.bd = bd;
+    }
+}

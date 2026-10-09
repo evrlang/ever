@@ -34,7 +34,8 @@ void main(string[] argv)
 		version(linux) system(toStringz("nasm -f elf64 " ~ argv[1].replace(".en", ".asm") ~ " -o " ~ argv[1].replace(".en", ".o")));
 		if (exists(argv[1].replace(".asm", "")))
 		{
-			version(linux) system(toStringz("gcc -no-pie "  ~ argv[1].replace(".en", ".o") ~ " -o " ~ argv[1].replace(".en", "")));
+			version(linux) writeln("gcc -no-pie "  ~ argv[1].replace(".en", ".o") ~ " -o " ~ argv[1].replace(".en", "") ~ " -L/usr/local/lib -levrlib");
+			version(linux) system(toStringz("gcc -no-pie "  ~ argv[1].replace(".en", ".o") ~ " -o " ~ argv[1].replace(".en", "") ~ " -L/usr/local/lib -levrlib"));
 			version(Windows) system(toStringz("lld-link "  ~ argv[1].replace(".en", ".obj") ~ " kernel32.lib -entry:_start -subsystem:console -out:" ~ argv[1].replace(".en", ".exe")));
 
 		}

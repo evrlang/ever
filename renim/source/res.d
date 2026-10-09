@@ -1,8 +1,8 @@
-module renim_main;
+module res;
 
-import std.stdio, ast, error, escapem, std.conv, structs, res;
+import std.stdio, ast, error, escapem, std.conv, structs;
 import std.algorithm;
-string renim(Node[] asttree)
+string simplerenim(Node[] asttree)
 {
     auto erda = new StandardError();
     string asm_res;
@@ -14,35 +14,13 @@ string renim(Node[] asttree)
     int setcount = 0;
     int funcname = 0;
     bool needblock = false;
-    string kl = "";
-    int loopc = 0;
     string setdata = "section .data\n\t";
     foreach(Node ast; asttree)
     {
         
-        if (auto af = cast(SectionDefine)ast)
+        if (auto af = cast(DefineFunction)ast)
         {
-            if (af.section_name == ".t") {
-                asm_res ~= "\nsection .text";
-                intxts = true;
-            }
-            else {
-                erda.unknown_section(af.section_name);
-            }
-        } else if (auto af = cast(EntryPointDefine)ast)
-        {
-            if (!intxts) erda.wrong_section();
-            asm_res ~= "\nglobal main\n\textern evrlib_write\n\textern evrlib_initgraphic\n\textern evrlib_ifwin";
-            version(Windows) asm_res ~= "\n extern ExitProcess\n extern GetStdHandle\n extern WriteFile";
-            asm_res ~= "\nmain:";
-            version(linux) asm_res ~= "\nsub rsp, 8";
-            
-            point = true;
-        } else if (auto af = cast(DefineFunction)ast)
-        {
-            if (!point){
-                erda.noenter(af.funcname);
-            } 
+            writeln(af.funcname, " ", af.value);
             if (af.funcname == "RENIM")
             {
                 if (eout(af.value) == "w")
@@ -58,7 +36,7 @@ string renim(Node[] asttree)
                 }
             } else if (af.funcname == "LOADUP")
             {
-                if (!point) erda.noenter(af.funcname);
+                //if (!point) erda.noenter(af.funcname);
 
                 if (lastloadupmode == "e"){
                     if (eout(af.value) == "%VAR")
@@ -83,7 +61,7 @@ string renim(Node[] asttree)
                     if (funcname == 1 && eout(af.value) == "%SET"){
                         asm_res ~= "\nlea rdi, [rel gbl" ~ to!string(setcount) ~ "]\ncall evrlib_initgraphic";
                     } else if (funcname == 2 && eout(af.value) == "%NULL"){
-                        asm_res ~= "pl:\ncall evrlib_ifwin\ntest al, al\njz cond";
+
                     }
                 }
             } else if (af.funcname == "VAR")
@@ -93,43 +71,11 @@ string renim(Node[] asttree)
                 } catch (Exception e){
                     erda.notnumber(eout(af.value));
                 }
-            } else if(af.funcname == "SET")
-            {
-                setcount += 1;
-                global_set = eout(af.value);
-                if (!asm_res.startsWith("section .data"))
-                {
-                    setdata = setdata ~ "gbl" ~ to!string(setcount) ~" db \"" ~ global_set ~ "\", 0\n\tgbl_len" ~ to!string(setcount) ~ " " ~ "db $ - gbl" ~ to!string(setcount) ~"\n";
-                }
             } else if (af.funcname == "FUNCNUM"){
-                if (to!int(eout(af.value)) == 2){
-                    needblock = true;
-                }
                 funcname = to!int(eout(af.value));
             } 
-        } else if (auto af = cast(EndEntryPointDefine)ast)
-        {
-            asm_res = setdata ~ asm_res ~ "\n" ~ kl;
-            continue;
-        } else if (auto af = cast(BlockDefine)ast){
-            //loopc += 1;
-            if (needblock){
-                kl = simplerenim(af.bd);
-                writeln("resukt:", simplerenim(af.bd));
-                loopc += 1;
-                kl = "\n" ~ kl ~ "\njmp pl";
-                asm_res ~= kl;
-                needblock = false;
-                continue;
-            } else {
-                StandardError.noblock();
-                continue;
-            }
         }
     }
-    if (ends == false){
-         StandardError.noend(); 
-         assert(0);
-    }
-    else return asm_res;
+    writeln(asm_res);
+    return asm_res;
 }

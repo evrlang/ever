@@ -44,4 +44,16 @@ class StandardError {
         cwriteln(" A function want Number, but you pass " ~ name ~" to it, Inside of EntryPoint.".white);
         exit(1);
     }
+
+    public static void noend(){
+        cwrite("Error:".red);
+        cwriteln(" No End Point defined for Entrypoint. ".white);
+        exit(1);
+    }
+
+    public static void noblock(){
+        cwrite("Error:".red);
+        cwriteln(" No need of block. ".white);
+        exit(1);
+    }
 }

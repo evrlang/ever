@@ -1,4 +1,0 @@
-CC = gcc
-
-librtime.a: rtime.c rtime.h
-	$(CC) -fPIC -shared rtime.c -o librtime.a

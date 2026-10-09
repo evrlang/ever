@@ -1,4 +1,0 @@
-
-LIBRARY "rtime.dll"
-EXPORTS
-consoleWrite

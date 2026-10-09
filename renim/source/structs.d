@@ -5,10 +5,18 @@ enum Types {
     Value,
     Section,
     Epoint,
-    Doer
+    Doer,
+    End,
+    BR
 }
 
 struct tokens {
     string value;
     Types type;
 }
+struct Brk {
+    string[] bod;
+}
+
+public Brk[] gbrk;
+public bool ends = false;
