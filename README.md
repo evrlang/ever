@@ -34,7 +34,7 @@ end
 </pre></code>
 <p>create a timer then it tick every 3500ms, in first tick we show a message</p>
 <pre><code>
-_time 3500
+def:time 3500
 delegate tick
 	def:write ("@RED" + "Hello" + @RESET)
 end
