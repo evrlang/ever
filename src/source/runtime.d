@@ -301,6 +301,8 @@ public void interp(Node[] nodes, int mode)
 				while(!broke){
 					
 					Thread.sleep(dur!"msecs"(time));
+					writeln("tick 1");
+					writeln(key._body);
 					interp(key._body, 0);
 					stdout.flush();
 					tick = false;

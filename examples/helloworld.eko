@@ -1,3 +1,0 @@
-generate main() {
-	write("Hello world");
-}

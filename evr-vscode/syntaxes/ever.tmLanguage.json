@@ -1,0 +1,50 @@
+{
+    "scopeName": "source.ever",
+    "patterns": [
+        {
+            "match":"\\b(if|end|while|delegate)\\b",
+            "name": "keyword.control.ever"
+        }, 
+        {
+            "match":"\\b(string|int|double|float|char|def:|_)\\b",
+            "name": "storage.control.ever"
+        }, 
+        {
+            "match":"@[A-Za-z_][A-Za-z0-9_]*",
+            "name": "variable.control.ever"
+        },
+        {
+            "match": "_[A-Za-z_][A-Za-z0-9_]*",
+            "name": "entity.name.function.ever"
+        },
+
+        {
+            "match": "\"([^\"\\\\]|\\\\.)*\"",
+            "name": "string.quoted.double.ever"
+        },
+
+        {
+            "match": "\\b[0-9]+(\\.[0-9]+)?\\b",
+            "name": "constant.numeric.ever"
+        },
+
+        {
+            "match": "//.*$",
+            "name": "comment.line.double-slash.ever"
+        },
+
+        {
+            "match": "(==|!=|<=|>=|<|>|\\+|-|\\*|/|=)",
+            "name": "keyword.operator.ever"
+        },
+
+        {
+            "match": "\\bdef:\\b_",
+            "name": "keyword.control.ever"
+        },
+        {
+            "match": "\\b(gen|generate)\\b",
+            "name": "keyword.control.ever"
+        }
+    ]
+}

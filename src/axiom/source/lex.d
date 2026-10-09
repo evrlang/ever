@@ -14,6 +14,7 @@ string ag;
 Node[] body_of_if;
 Node[] bod;
 Tokens[] arguments;
+string[] akjs;
 int ip = 0;
 bool dg = false; // for delegate, to discover if we are in delegate or not.
 	bool df = false;
@@ -105,6 +106,11 @@ Tokens[] lexer(string lineo)
 		} else if (fk){
 			if (tok == "end")
 			{
+				string aj = "";
+				foreach(lk; akjs){
+					aj ~= " " ~ lk;
+				}
+				bod = parser(lexer(aj));
 				_bdelegate ~= BlockDelegates(dgate_bol, bod);
 				result ~= Tokens(Token.BrNeedFunc, "delegate");
 				fk = false;
@@ -112,7 +118,10 @@ Tokens[] lexer(string lineo)
 				dgate_bol = "";
 
 				continue;
-			} else continue;
+			} else {
+				akjs ~= tok;
+				continue;
+			}
 		} else if (dg){
 			fk = true;
 			dgate_bol = tok;

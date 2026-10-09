@@ -1,0 +1,36 @@
+{
+    "name": "evr-vscode",
+    "displayName": "Ever Programming Language Support for VSCode",
+    "description": "Syntax Highlighting for Ever Source code.",
+    "version": "0.0.1",
+    "publisher": "evrlang",
+    "icon": "icon.jpg",
+    "license": "GPL-3.0-only",
+    "engines": {
+        "vscode": "^1.105.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "ever",
+                "aliases": [
+                    "Ever",
+                    "ever"
+                ],
+                "extensions": [
+                    ".evr", ".ever"
+                ]
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ever",
+                "scopeName": "source.ever",
+                "path": "./syntaxes/ever.tmLanguage.json"
+            }
+        ]
+    }
+}

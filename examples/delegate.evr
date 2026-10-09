@@ -1,0 +1,5 @@
+def:time 3500
+delegate tick
+	def:write "Hello world!\n"
+	def:break NULL
+end

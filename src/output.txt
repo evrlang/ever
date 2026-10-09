@@ -1,1 +1,3 @@
-[]
+[ast.FuncCall]
+--TOKENS--
+[Tokens(Func, "_write")]

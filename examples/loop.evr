@@ -1,0 +1,3 @@
+if (def:while true)
+	def:write "Hello world forever!\n"
+end

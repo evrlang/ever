@@ -1,0 +1,5 @@
+gen string @a "Everlang"
+if (@a == "Everlang")
+    def:write "Equal!"
+    def:write "\n"
+end

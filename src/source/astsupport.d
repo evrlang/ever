@@ -97,7 +97,7 @@ void debg(string filen, int mode){
 			//writeln(tokenlist);
 		    Node[] parser_result = parser(tokenlist);
             auto ak = File("output.txt", "w");
-            ak.write(parser_result);
+            ak.write(parser_result, "\n--TOKENS--\n", tokenlist);
             ak.close();
         }
     }

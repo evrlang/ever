@@ -1,0 +1,4 @@
+gen string @name def:getInput "Whats your name? "
+if (@name == "pouya")
+    def:write "Welcome!\n"
+end

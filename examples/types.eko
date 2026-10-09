@@ -1,2 +1,0 @@
-gen float hello = 12.09
-_write(hello);
