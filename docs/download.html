@@ -7,6 +7,7 @@
     <title>ever-website</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark-Multi-Column-icons.css">
+    <link rel="stylesheet" href="assets/css/imj.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 <meta property="og:title" content="Ever Programming Language">
 <meta property="og:description" content="Simple, human-friendly like good old TurboC.">
@@ -17,43 +18,38 @@
 
 <body>
     <nav class="navbar navbar-expand-md bg-body" style="display: flex;">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><img src="assets/img/Picsart_26-10-03_10-47-31-678-removebg-preview.png"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><a class="navbar-brand" href="#"><img class="img-fluid" src="assets/img/Picsart_26-10-03_10-47-31-678-removebg-preview.png" width="50"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="download.html"><strong>Download</strong></a></li>
                     <li class="nav-item"><a class="nav-link" href="https://github.com/evrlang/ever/discussions">Forum</a></li>
-                    <li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wiki/index.html">Wiki</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div style="height: 80vh; padding-top: 60px;">
+    <div style="height: 70vh; padding-top: 60px;">
         <h1 style="margin: 10px; margin-bottom: 5px;">Downloads</h1>
         <p style="margin: 10px; margin-top: 0;">Home &gt; <span style="color: rgb(255, 46, 0);">Downloads</span></p>
         <div id="plt" style="padding: 10px;"><center>
     
             <p>Choose Your Platform</p>
-            <div><img src="assets/img/Tux.svg.webp" onclick="linuxshow();"><img src="assets/img/Windows_unused.svg.webp" style="margin-left: 10px;" onclick="winshow();"><img src="assets/img/Android_robot.svg.webp" style="margin-left: 10px;" onclick="androidshow();"></div>
+            <div><img class="img-fluid" src="assets/img/Tux.svg.webp" onclick="linuxshow();" width="80"><img src="assets/img/Android_robot.svg.webp" style="margin-left: 10px;" onclick="androidshow();" width="80"></div>
         </div>
         <div id="plt-1" style="padding: 10px;"><center>
     
             <p>Source Code</p>
             <div><img src="assets/img/Octicons-mark-github.svg.webp" onclick="window.location.href = &quot;https://github.com/evrlang/ever&quot;;" width="50" height="51"><img src="assets/img/ZIP_File.png" style="margin-left: 10px;" onclick="window.location.href = &quot;https://github.com/evrlang/ever/archive/refs/heads/main.zip&quot;;" width="50" height="51"></div>
         </div>
-        <div id="plt-2" style="padding: 10px;"><center>
-            <p style="margin-bottom: 10px;">Download the Ever Books</p>
-            <div><img src="assets/img/Picsart_26-09-24_11-03-00-847.jpg" onclick="window.location.href = &quot;books.html&quot;;" width="50" height="65"><img src="assets/img/Picsart_26-10-02_23-21-26-171.jpg" style="margin-left: 10px;" onclick="window.location.href = &quot;books.html&quot;;" width="50" height="66"></div>
+        <div id="download-linux" style="padding: 10px;"><center><img src="assets/img/Tux.svg.webp" width="80">
+            <p>There are no pre-compiled binaries here. You need to compile it for your own system.</p>
         </div>
-        <div id="download-linux" style="padding: 10px;"><center><img src="assets/img/Tux.svg.webp">
-            <p>Linux X86-64&nbsp;<a id="as" href="#">ever-linux-x86-64.zip</a></p>
-            <p>Linux X86&nbsp;<a id="as" href="#">ever-linux-x86-64.zip</a></p>
-        </div>
-        <div id="download-win" style="padding: 10px;"><center><img src="assets/img/Windows_unused.svg.webp">
+        <div id="download-win" style="padding: 10px;"><center><img src="assets/img/Windows_unused.svg.webp" width="80">
             <p>Windows X86-64&nbsp;<a id="as" href="#">ever-win-x86-64.zip</a></p>
             <p>Windows X86&nbsp;<a id="as" href="#">ever-win-x86-64.zip</a></p>
         </div>
-        <div id="download-android" style="padding: 10px;"><center><img src="assets/img/Android_robot.svg.webp">
+        <div id="download-android" style="padding: 10px;"><center><img src="assets/img/Android_robot.svg.webp" width="80">
             <p>No version for Android has been released yet.<br>You can download the source code and compile it yourself.</p>
         </div>
     </div>

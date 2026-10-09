@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ever-website</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/Footer-Dark-Multi-Column-icons.css">
+    <link rel="stylesheet" href="../../assets/css/fs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
+
+<meta property="og:title" content="Ever Programming Language">
+<meta property="og:description" content="Simple, human-friendly like good old TurboC.">
+<meta property="og:image" content="https://evrlang.github.io/ever/everlogo.jpg">
+<meta property="og:url" content="https://evrlang.github.io/ever/">
+<link rel="icon" type="image/jpg" href="everlogo.jpg">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-body">
+        <div class="container-fluid"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><img src="../../assets/img/Picsart_26-10-04_18-29-01-889-removebg-preview.png" height="45" width="">
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Download</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Compilers and Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Compile Ever</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
+                    <li class="nav-item text-center justify-content-center align-items-center" style="text-align: center;display: flex;"><center>
+                        <div class="theme-switcher nav-item dropdown"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-sun-fill mb-1">
+                                    <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+                                </svg></a>
+                            <div class="dropdown-menu"><a class="dropdown-item d-flex align-items-center" href="#" data-bs-theme-value="light"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-sun-fill opacity-50 me-2">
+                                        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+                                    </svg>Light</a><a class="dropdown-item d-flex align-items-center" href="#" data-bs-theme-value="dark"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-moon-stars-fill opacity-50 me-2">
+                                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278"></path>
+                                        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+                                    </svg>Dark</a><a class="dropdown-item d-flex align-items-center" href="#" data-bs-theme-value="auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-circle-half opacity-50 me-2">
+                                        <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"></path>
+                                    </svg>Auto</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="padding: 10px; padding-top: 100px;">
+        <h1>Creating a graphical window in less than 1 minute in Ever</h1>
+        <p>written by <strong><em>Pouya Mohammadi</em></strong></p>
+    </div>
+    <div id="card" style="margin: 10px;">
+        <p>In the name of Allah, the Merciful.</p>
+    </div>
+    <p style="padding: 10px; padding-top: 0;">In this article, I'm going to show you how to create a program with a graphical user interface in "Ever".&nbsp; We'll also look at the equivalent code in other languages.</p>
+    <div id="card" style="margin: 10px;">
+        <h3>Prerequisites</h3>
+        <p>At the very least, you know the difference between a graphical user interface (GUI) and a text-based interface.<br>If you have done some programming before, you are likely familiar with the amount of code required to implement graphical interfaces in various languages.</p>
+    </div>
+    <div><center><img src="../../assets/img/Midnight_Commander_(2005)_en.png" width="293" height="184">
+        <p>Midnight Commander is a <a href="https://en.wikipedia.org/wiki/Console_application">console application</a> with a <a href="https://en.wikipedia.org/wiki/Text-based_user_interface">text user interface</a>.</p></center>
+    </div>
+    <div style="margin-top: 10px;"><center><img src="../../assets/img/Example_of_a_GUI.png" width="293" height="184">
+        <p>A graphical user interface (GUI) showing various elements: radio, buttons, checkboxes, and other elements. The image shown uses the <a href="https://en.wikipedia.org/wiki/KDE">KDE</a> <a href="https://en.wikipedia.org/wiki/Desktop_environment">desktop environment</a>.<br><br></p></center>
+    </div>
+    <p style="padding: 10px; padding-top: 0; padding-bottom: 0;">Well, first let me show you the program itself.</p><pre><code class="language-c" style="margin: 10px;">def:mainWindow ("l1" "Hello world")
+def:label ("Hello :\cp" "center" "l1")
+def:loopWindow "l1"
+</pre></code>
+
+<script>hljs.highlightAll();</script>
+    
+    <p style="padding: 10px; padding-top: 0;">After saving this file as <code>myguiapp.evr</code>&nbsp;(the file is available in the examples section of the GitHub repository), the output of this code—when run using the latest version of the language's interpreter/compiler on Linux—will be as follows:</p>
+    <div style="margin-top: 10px; margin-bottom: 10px;"><center><img src="../../assets/img/Screenshot_2026-10-04_20-53-37.png" width="293" height="184">
+        <p style="margin-bottom: 10px !important;">output of myguiapp.evr</p></center>
+        <p style="padding: 10px; padding-top: 0;">So, this code consists of the following components:<br>1. The `mainwindow` function: This is a runtime function that is available with the exact same syntax on the Windows interpreter as well—though the window's appearance differs on Windows. It takes two arguments: the name of the window you wish to create and its title. Currently, this function does not support window resizing, but that is a feature slated for an upcoming release. Note that you might not be able to create multiple windows simultaneously on Windows, though this hasn't been tested.<br><br>2. The `label` function: This adds a text widget to the window you’ve created; it accepts the text content and specifies its placement.<br><br>3. The final function, `loopWindow`: This function keeps the window running in a loop until it is closed.<br><br>And that was a simple example. Let's write the equivalent of this code in C#, since I learned C# to write the interpreter on Windows:</p><pre><code class="language-c" style="margin: 10px;">using System;
+using System.Windows.Forms;
+
+class Program
+{
+    static void Main()
+    {
+        ApplicationConfiguration.Initialize();
+
+        Form form = new Form();
+        form.Text = "Hello world";
+        form.Width = 400;
+        form.Height = 200;
+
+        Label label = new Label();
+        label.Text = "Hello, World!";
+        label.AutoSize = true;
+        label.Left = 20;
+        label.Top = 20;
+
+        form.Controls.Add(label);
+
+        Application.Run(form);
+    }
+}
+</pre></code>
+
+<script>hljs.highlightAll();</script>
+    
+        <p style="padding: 10px; padding-top: 0;"><span style="color: rgb(0, 128, 255);">*</span> Note that in ever code, <span style="color: rgb(0, 128, 255);">\cp</span> is a escape sequence for ")". see<span style="color: rgb(255, 77, 0);"> </span><a href="escape-sequence.html"><span style="color: rgb(255, 15, 0);">escape sequence in ever</span></a><span style="color: rgb(255, 77, 0);">&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="red" viewBox="0 0 16 16" class="bi bi-arrow-up-right">
+                <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"></path>
+            </svg><span style="color: rgb(255, 77, 0);">.</span></p><center><img class="img-fluid" src="../../assets/img/evrgraphical1.png" width="540" height="358"></center>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/bs-init.js"></script>
+    <script src="../../assets/js/script.js"></script>
+</body>
+
+</html>

@@ -17,7 +17,7 @@
 <meta property="og:description" content="Simple, human-friendly like good old TurboC.">
 <meta property="og:image" content="https://evrlang.github.io/ever/everlogo.jpg">
 <meta property="og:url" content="https://evrlang.github.io/ever/">
-<link rel="icon" type="image/jpg" href="everlogo.jpg">
+<link rel="icon" type="image/jpg" href="images/everlogo.jpg">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                     <li class="nav-item"><a class="nav-link active" href="#"><strong>Home</strong></a></li>
                     <li class="nav-item"><a class="nav-link" href="download.html">Download</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://github.com/evrlang/ever/discussions">Forum</a></li>
-                    <li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wiki/index.html">Wiki</a></li>
                 </ul>
             </div>
         </div>
@@ -52,7 +52,7 @@
                                     <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"></path>
                                     <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"></path>
                                 </svg></div>
-                            <div style="background-color: lightgray; height: 1px; width: 100%;"></div><pre><code class="language-python">gen string @name def:getInput "What's your name?"
+                            <div style="background-color: lightgray; height: 1px; width: 100%;"></div><pre><code class="language-python">gen string @name def:getInput "Whats your name?"
 if (@name == "Pouya")
     write ("Nice to meet you, " + @name)
 end
@@ -60,6 +60,7 @@ end
 
 
                         </div>
+                        <div><button class="btn btn-primary" type="button" onclick="window.location = &quot;download.html&quot;;">Download For Linux (v0.0.5-alpha)</button></div>
                     </div>
                 </div>
             </div>
@@ -73,6 +74,12 @@ end
         <div style="background-color: lightgray; height: 1px; width: 100%;"></div><pre><code class="language-sh">curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash</code></pre>
 <script>hljs.highlightAll();</script>
     </div>
+    <div>
+        <div style="background-color: lightgray; height: 1px; width: 100%; margin: 10px; margin-left: 0;"></div>
+        <h4 class="text-start" style="padding-left: 10px;"><strong>Why Ever?</strong></h4>
+        <p style="margin: 10px; margin-top: 0;">Well, this language wasn't created to compete with other languages. Right now, it is in a version that isn't yet stable and contains various bugs. And I’m not going to write here that we have "X"—something that Python or C lacks.<br>But well, it simplifies writing code. Unlike C, it doesn't require defining a main function as the program's entry point, and it compiles to its own proprietary intermediate language.<br>And for now, the chain looks something like what I’ve drawn below:</p>
+    </div><center><img class="ksks img-fluid" src="assets/img/poc-ever(1).png" width="418" height=""><img class="ksks img-fluid" src="assets/img/poi-ever.png" width="577" height=""><img class="ksks img-fluid" src="assets/img/poivm-ever.png" width="577" height=""></center>
+    <p style="margin: 10px; margin-top: 0;">The language currently uses compile and tree-walking interpreter, but in the future, I plan to switch to VM bytecode instead, as it is faster and more efficient.</p>
     <div style="padding: 10px;">
         <div id="card">
             <h3>Read Fast</h3>
@@ -82,9 +89,28 @@ end
     <div style="padding: 10px;">
         <div id="card">
             <h3>Write Fast</h3>
-            <p>Writing code in Ever is fast. Unlike C#, you don't have to memorize endless function names or rely on autocomplete — Ever keeps everything simple for you.</p>
+            <p>Ever aims to keep everyday programming simple and readable. Its syntax is designed to reduce boilerplate and let developers focus on what their programs do rather than on repetitive structure.</p>
+        </div>
+        <div id="card" style="margin-top: 20px;">
+            <h3>Creating a graphical application in less than 1 minute</h3>
+            <p>If you want to get familiar with the syntax and simplicity of Ever, <a id="dfdf" href="wiki/tour/writing-a-graphical-app-less-than-1-min.html" style="color: red !importent;"><span style="color: rgb(255, 15, 0);">take a tour of writing a graphical program in less than a minute&nbsp;</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-up-right">
+                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"></path>
+                    </svg></a>.</p>
         </div>
     </div>
+    <div>
+        <div style="background-color: lightgray; height: 1px; width: 100%; margin: 10px; margin-left: 0;"></div>
+        <h4 class="text-start" style="padding-left: 10px;"><strong>Packages and Library in Ever</strong></h4>
+        <p style="margin: 10px; margin-top: 0;">With <a href="wiki/evrpkg.html"><span style="color: rgb(241, 0, 0);">evrpkg</span></a>, you can install or publish packages—such as libraries or applications—written for Ever. It works just like npm for Node.js.</p>
+    </div><pre style="margin: 10px; margin-top: 0;"><code class="language-sh">~/ever/evrpkg$ ./evrpkg install @pouya:ever-test
+Download @pouya:ever-test finished.
+A simple test
+Install progress finished, Done.
+~/ever/evrpkg$ ./evrpkg ever-test
+Hello world!
+~/ever/evrpkg$</code></pre>
+<script>hljs.highlightAll();</script>
+    <p style="margin: 10px; margin-top: 0;">You can compile it yourself from <span style="color: rgb(255, 31, 0);">Ever Github </span><span style="color: rgb(0, 0, 0);">, and use it.</span></p>
     <footer class="text-white bg-dark">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
@@ -107,7 +133,7 @@ end
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
                     <h3 class="fs-6 text-white">Source code</h3>
                     <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Github</a></li>
+                        <li><a class="link-light" href="https://github.com/evrlang/ever">Github</a></li>
                         <li><a class="link-light" href="#">Github Pouya1dev</a></li>
                         <li></li>
                     </ul>

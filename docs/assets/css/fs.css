@@ -1,0 +1,23 @@
+p {
+  margin-bottom: 0;
+}
+
+.navbar {
+  /*border-bottom: solid 2px linear-gradient(red, yellow, blue);*/
+  position: fixed;
+  width: 100%;
+  /*margin-top: 20px;*/
+  z-index: 1000;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(to right, red, blue) 1;
+}
+
+div {
+}
+
+#card {
+  border: solid 1px lightgray;
+  padding: 10px;
+  border-left: solid 5px red;
+}
+

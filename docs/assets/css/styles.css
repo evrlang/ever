@@ -13,7 +13,7 @@ a {
 }
 
 img {
-  width: 50px;
+  /*width: 50px;*/
 }
 
 #main {
@@ -61,5 +61,50 @@ p {
   border: solid 1px lightgray;
   padding: 10px;
   border-left: solid 5px red;
+}
+
+.btn {
+  background-color: white;
+  border: solid 1px lightgray;
+  color: black;
+}
+
+.btn:hover {
+  background-color: #f60035;
+  border: solid 1px #f60035;
+}
+
+.btn:active {
+  background-color: #f60035 !important;
+  border: solid 1px #f60035 !important;
+}
+
+#dfdf {
+  color: red !important;
+  text-decoration: none;
+}
+
+#dfdf:link {
+  color: red !important;
+}
+
+#dfdf:visited {
+  color: red !important;
+}
+
+#dfdf:hover {
+  color: red !important;
+}
+
+#dfdf:active {
+  color: red !important;
+}
+
+.nav #dfdf {
+  color: red !important;
+}
+
+#header #dfdf {
+  color: red !important;
 }
 
