@@ -1,7 +1,7 @@
 #!/bin/bash
 
 T2=$(which evr)
-if [ -z "$T" ]; then
+if [ -z "$T2" ]; then
     git clone --depth 1 https://github.com/evrlang/ever
     
     cd ever
@@ -9,11 +9,7 @@ if [ -z "$T" ]; then
     ./compile.sh
     cd src
     if [ -f "evr" ]; then
-        echo "Do you want to install it for all users of this pc? (this need sudo)[Y,N]"
-        read answer
-        if [ "$answer" == "Y" ]; then
-            sudo mv evr /usr/local/bin
-        fi
+       sudo install -m 755 evr /usr/local/bin/evr
     fi
 else
     sudo rm "$T2"
