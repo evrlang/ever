@@ -27,15 +27,23 @@ if [ -f "/usr/local/lib/libcbased.so" ]; then
 			cd src/axiom
 			dub
 			sudo mv libaxiom.a /usr/local/lib
+			echo "run compile.sh again."
 		fi
 	else
 		cd evrlib/evrlib
 		make
 		sudo mv libcbased.so /usr/local/lib
 		sudo ldconfig
+		cd ../..
+		echo "run compile.sh again."
 	fi
 else 
 	cd evrlib
-	make
+	make libcbased.so
+	make libevrlib.so
 	sudo mv libcbased.so /usr/local/lib
+	sudo mv libevrlib.so /usr/local/lib
+	sudo ldconfig
+	cd ..
+	echo "run compile.sh again."
 fi

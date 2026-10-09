@@ -1,6 +1,7 @@
 # only for gnu tools
 build: cbased/cbased.c cbased/cbased.h evrlib/evrlib.c evrlib/evrlib.h evrlib/graphic.h evrlib/graphic.c
-	gcc -shared -fPIC cbased/cbased.c -o libcbased.so
+	gcc -fPIC -shared cbased/cbased.c -o libcbased.so
+
 	gcc -fPIC -shared evrlib/evrlib.c evrlib/graphic.c -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o libevrlib.so 
 
 libcbased.so: cbased/cbased.c cbased/cbased.h
