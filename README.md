@@ -19,24 +19,24 @@ well, right now the project is in alpha mode. That means it's only released for 
 ever is easy and really human-friendly. It's very easy to read and it depends on how well or how busy you are at coding.
 <p>print hello world </p>
 <pre><code>
-_write "Hello world\n"
+def:write "Hello world\n"
 </pre></code>
 <p>print hello world and add strings to themself</p>
 <pre><code>
-_write ("Hello World" + "\n")
+def:write ("Hello World" + "\n")
 </pre></code>
 <p>get input from user and check if it equal to a value</p>
 <pre><code>
-gen string @name _getInput "Whats your name? "
+gen string @name def:getInput "Whats your name? "
 if (@name == "ever")
-	_write (@BOLD + @GREEN + "Hello world" + "\n")
+	def:write (@BOLD + @GREEN + "Hello world" + "\n")
 end
 </pre></code>
 <p>create a timer then it tick every 3500ms, in first tick we show a message</p>
 <pre><code>
 _time 3500
 delegate tick
-	_write ("@RED" + "Hello" + @RESET)
+	def:write ("@RED" + "Hello" + @RESET)
 end
 </code></pre>
 
