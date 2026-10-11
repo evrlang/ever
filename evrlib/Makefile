@@ -13,6 +13,7 @@ libevrlib.so: evrlib/evrlib.c evrlib/graphic.c
 install: libcbased.so libevrlib.so
 	sudo mv libcbased.so /usr/local/lib
 	sudo mv libevrlib.so /usr/local/lib
+	sudo cp evrlib/evrlib.h /usr/local/include/
 
 clean:
 	rm libcbased.so

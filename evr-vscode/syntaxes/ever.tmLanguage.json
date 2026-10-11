@@ -6,7 +6,7 @@
             "name": "keyword.control.ever"
         }, 
         {
-            "match":"\\b(string|int|double|float|char|def:|_)\\b",
+            "match":"\\b(string|int|double|float|char|def:|_|const)\\b",
             "name": "storage.control.ever"
         }, 
         {

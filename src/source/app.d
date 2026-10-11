@@ -29,6 +29,19 @@ void main(string[] args)
 		prHelpMenu();
 	}else if (args[1] == "--compile" || args[1] == "-c")
 	{
+		if ((args.length > 2) && (args[2] == "--compile-backend:C")){
+			if (exists(args[3])){
+				string outputname = "";
+				if (args[3].endsWith(".evr")){
+					outputname = args[3].replace(".evr", ".c");
+				} else if (args[3].endsWith(".ever")){
+					outputname = args[3].replace(".ever", ".c");
+				} else {
+					_error("wrong file format for ever programs.");
+				}
+				compileuseC(outputname, readText(args[3]));
+			}
+		} else {
 		if ((args.length <= 2) || (args.length > 2 && !exists(args[2])))
 		{
 			writeln(red ~ bold ~ "Error:" ~ reset ~" The imported file does not exist.");
@@ -36,6 +49,7 @@ void main(string[] args)
 		}
 		writeln("Please note that the compiler is currently in " ~ "\033[1m" ~"beta " ~ "\033[0m" ~", and it does not support all functions. It is unstable and is not supported on all platforms.");
 		astSupportCompile(args[2]);
+		}
     } else if (args[1] == "-v" || args[1] == "--version")
 	{
 		writeln("\033[1mever (V" ~ ever_ver ~ ") " ~ __DATE__ ~ " " ~ __TIME__);

@@ -1,3 +1,14 @@
-if (def:while true)
-    def:write "Hello"
-end
+gen const<char>* @aname "Pouya\n"
+def:write @aname
+
+gen char<*> @name "Peinos\n"
+def:write @name
+
+gen char<max> @name3 "CR7\n"
+def:write @name3
+
+gen int @n 12
+def:write @n
+
+gen string @justescape "\n"
+def:write @justescape
