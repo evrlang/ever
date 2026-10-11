@@ -12,9 +12,7 @@ curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash
 <h1 style="font-weight:bold;"> Ever Programming Language</h1>
 
 <h1 style="font-weight:bold;">Why Ever?</h1>
-all start from when I bought a C programming book, thinking it covered the modern version for GCC, but the book actually taught Turbo C and I was truly amazed at how simple it was. When I went to install Turbo C, I realized it was an old compiler for DOS and, unfortunately, lacked a version for Linux or modern Windows. That is why I decided to create my own language—one that would allow for writing robust, safe programs while remaining simple and readable. And that is what led me to create this language.
-
-
+all start from when I bought a C programming book, thinking it covered the modern version for GCC, but the book actually taught Turbo C and I was truly amazed at how simple it was. When I went to install Turbo C, I realized it was an old compiler for DOS and, unfortunately, lacked a version for Linux or modern Windows. That is why I decided to create my own language—one that would allow for writing robust, safe programs while remaining simple and readable. And that is what led me to create this language.<p></p>
 We all love C, but at the same time, it's difficult to use in projects and working with pointers makes many people die when writing it. But the goal of ever is almost the same. Basically, ever wants to have a simple and functional syntax like Turbo C, easy to understand and work with, but in a modern environment.
 <h1>Current status</h1>
 well, right now the project is in alpha mode. That means it's only released for debugging and it's full of bugs! And it's fixing problems and testing new features. So it's not suitable for use and it's not predictable to some extent. And it's more educational than industrial.
