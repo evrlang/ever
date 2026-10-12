@@ -24,7 +24,8 @@ void prHelpMenu()
 	writeln("\t-f | --config: port your config file to set compiler behavior.");
 	writeln("\t-d | --debug: create a output file, and save result of AST on it.");
 	writeln("\t--compile --compile-backend:<Language Name> : Use selected language as Backend of Compiler.");
-	writeln("\t--compile --compile-linker:<Selected Linker> : Link result object with Selected linker. (Only supported linker can use.)");
+	writeln("\t--compile --compile-linker:<Selected Linker> : Link result object with Selected linker. (Only supported linker can use.) ld - gnu gold - lld");
+	writeln("\t--compile-bc-dwarf : allow to create debug information via dwarf debug format using dwarf-4. (only for C-Backend mode for now.)");
 	writeln("\nExample: ./evr -e hi.evr\033[0m");
 }
 
@@ -35,17 +36,46 @@ void main(string[] args)
 	}else if (args[1] == "--compile" || args[1] == "-c")
 	{
 		if ((args.length > 2) && (args[2] == "--compile-backend:C")){
-			if (exists(args[3])){
-				string outputname = "";
-				if (args[3].endsWith(".evr")){
-					outputname = args[3].replace(".evr", ".c");
-				} else if (args[3].endsWith(".ever")){
-					outputname = args[3].replace(".ever", ".c");
+				if (args.length > 3 && args[3].startsWith("--compile-linker:")){
+					if ((args.length >= 4) && !exists(args[4])) _error("File not exists.");
+					string outputname = "";
+					if (args[4].endsWith(".evr")){
+						outputname = args[4].replace(".evr", ".c");
+					} else if (args[4].endsWith(".ever")){
+						outputname = args[4].replace(".ever", ".c");
+					} else {
+						_error("wrong file format for ever programs.");
+					}
+					if (args[3] == "--compile-linker:ld"){
+						writeln("using GNU linker (ld) as linker for this build. as selected from --compile-linker.");
+						/*table
+							0 = ld
+							1 = ld.gold
+							2 = lld
+						*/
+						compileuseC(outputname, readText(args[4]), 0);
+					} else if(args[3] == "--compile-linker:gold"){
+						writeln("using GNU Gold (ld.gold) as linker for this build. as selected from --compile-linker.");
+						compileuseC(outputname, readText(args[4]), 1);
+					} else if(args[3] == "--compile-linker:lld"){
+						writeln("using LLVM Linker (lld) as linker for this build. as selected from --compile-linker.");
+					} else {
+						_error("Unknown/Unsupported linker.");
+					}
+				} else if (args.length > 3 && args[3].startsWith("--compile-bc-dwarf:")){
+					//i must continue from here.
 				} else {
-					_error("wrong file format for ever programs.");
+					if (!exists(args[3])) _error("File not exists.");
+					string outputname = "";
+					if (args[3].endsWith(".evr")){
+						outputname = args[3].replace(".evr", ".c");
+					} else if (args[3].endsWith(".ever")){
+						outputname = args[3].replace(".ever", ".c");
+					} else {
+						_error("wrong file format for ever programs.");
+					}
+					compileuseC(outputname, readText(args[3]), 0);
 				}
-				compileuseC(outputname, readText(args[3]));
-			}
 		} else {
 		if ((args.length <= 2) || (args.length > 2 && !exists(args[2])))
 		{

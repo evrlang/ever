@@ -103,7 +103,7 @@ void debg(string filen, int mode){
     }
 }
 
-void compileuseC(string outputname, string filec){
+void compileuseC(string outputname, string filec, int linkercode){
     Node[] result;
     string[] lines = filec.splitLines();
     foreach(string line; lines){
@@ -118,7 +118,9 @@ void compileuseC(string outputname, string filec){
     resf.write(resu.filen);
     resf.close();
     system(toStringz("gcc -c " ~ resu.filename ~ " -o " ~ resu.filename.replace(".c", ".o")));
-    system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    if (linkercode == 0) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    if (linkercode == 1) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -fuse-ld=gold -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    if (linkercode == 2) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -fuse-ld=lld -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
     remove(resu.filename);
     //writeln(result);
 }
@@ -159,4 +161,26 @@ void repl(){
 			interp(parser_result, 0);
     }
     write("\n\033[1m>>> \033[0m");
+}
+
+void dwarf_compileuseC(string outputname, string filec, int linkercode){
+    Node[] result;
+    string[] lines = filec.splitLines();
+    foreach(string line; lines){
+        //writeln(line);
+        Tokens[] tks = lexer(line);
+        //writeln(tks);
+        result ~= parser(tks);
+        //writeln(result);
+    }
+    Cfile resu = cbackend_cc(outputname, result);
+    auto resf = File(resu.filename, "w");
+    resf.write(resu.filen);
+    resf.close();
+    system(toStringz("gcc -g -gdwarf-4 -c " ~ resu.filename ~ " -o " ~ resu.filename.replace(".c", ".o")));
+    if (linkercode == 0) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    if (linkercode == 1) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -fuse-ld=gold -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    if (linkercode == 2) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -fuse-ld=lld -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    remove(resu.filename);
+    //writeln(result);
 }
