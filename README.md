@@ -55,19 +55,7 @@ Then, go to the `evrlib` folder using `cd` and run:
 make
 ```
 
-After that, copy `libcbased.so` to `/usr/local/lib` so the linker can find it easily:
-
-```bash
-sudo cp libcbased.so /usr/local/lib/
-```
-
-Then run:
-
-```bash
-sudo ldconfig
-```
-
-This updates the system's shared-library cache.
+After that, simply run `make install` on same folder to install library into `/usr/local/lib` so the linker can find it easily.
 
 Now, go to the `src` folder inside the Ever source directory and run:
 
