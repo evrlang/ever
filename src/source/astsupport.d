@@ -4,7 +4,7 @@ import std.stdio;
 import axiom;
 import runtime;
 
-import std.file, std.string, std.algorithm, cbackend, core.stdc.stdlib;
+import std.file, std.string, std.algorithm, cbackend, core.stdc.stdlib, ver, clito;
 
 bool ccp = false;
 void astSupportRun(string filepath, int mode)
@@ -121,4 +121,41 @@ void compileuseC(string outputname, string filec){
     system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
     remove(resu.filename);
     //writeln(result);
+}
+
+void cli(){
+    //bool ccp = false;
+    writeln("\033[1m\033[32mEver\033[0m\033[1m " ~ ever_ver ~ " - (C) 2026 - Pouya Mohammadi.\033[0m");
+    writeln("Use `;help` to show help menu. or use `;help option` to see help menu of an option.");
+    write("\033[1m>>>\033[0m ");
+    repl();
+
+}
+
+void repl(){
+    auto hj = readln().strip();
+    if (hj.startsWith(";")){
+        //CLI Function.
+        auto func = hj.split(" ");
+        //writeln(func);
+        if (func.length >= 1 && func[0] == ";help"){
+            Clitools.helpmenu("");
+        } else if (func.length == 1 && func[0] == ";quit"){
+            Clitools.end();
+        }
+    } else {
+            //writeln(ccp, li);
+            Tokens[] tokenlist = lexer(hj);
+			//writeln(tokenlist);
+			Node[] parser_result = parser(tokenlist);
+			//writeln(parser_result);
+            //if (mode == 1) writeln(parser_result);
+            map_str["@RED"] = "\033[31m";
+            map_str["@RESET"] = "\033[0m";
+            map_str["@BOLD"] = "\033[1m";
+            map_str["@GREEN"] = "\033[32m";
+			interp(parser_result, 0);
+    }
+    write("\n\033[1m>>> \033[0m");
+    repl();
 }

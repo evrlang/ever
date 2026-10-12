@@ -1,15 +1,17 @@
 import std.stdio;
 import std.file, std.regex, std.string, std.algorithm, core.stdc.stdlib, std.conv;
 public import axiom;
-import astsupport;
+import astsupport, ver;
 
 
 int oa = 0;
 string aj;
-public string ever_ver = "0.0.5";
+
+//COLORS
 string red = "\033[31m";
 string bold = "\033[1m";
 string reset = "\033[0m";
+//END_OF_COLORS
 
 void prHelpMenu()
 {
@@ -20,13 +22,16 @@ void prHelpMenu()
 	writeln("\t-e | --enter: run your script with lastest version if core.");
 	writeln("\t-c | --compile: compile your code and create a standalone binary.");
 	writeln("\t-f | --config: port your config file to set compiler behavior.");
+	writeln("\t-d | --debug: create a output file, and save result of AST on it.");
+	writeln("\t--compile --compile-backend:<Language Name> : Use selected language as Backend of Compiler.");
+	writeln("\t--compile --compile-linker:<Selected Linker> : Link result object with Selected linker. (Only supported linker can use.)");
 	writeln("\nExample: ./evr -e hi.evr\033[0m");
 }
 
 void main(string[] args)
 {
 	if (args.length < 2){
-		prHelpMenu();
+		cli();
 	}else if (args[1] == "--compile" || args[1] == "-c")
 	{
 		if ((args.length > 2) && (args[2] == "--compile-backend:C")){

@@ -116,6 +116,8 @@ Node[] parser(Tokens[] tokens){
 			}
 		}
 		}
+	} else if (tokens.length == 2 && tokens[0].type == Token.Name && tokens[1].type == Token.Value){
+		result ~= new ChangeValueDefine(tokens[0].valu, tokens[1].valu);
 	}
 	//writeln(ifs);
 	//writeln(result);

@@ -108,3 +108,12 @@ class WhileWithFuncDefine: Node {
 		this.bodya = bodya;
 	}
 }
+
+class ChangeValueDefine : Node {
+	string name;
+	string newvalue;
+	this(string name, string newvalue){
+		this.name = name;
+		this.newvalue = newvalue;
+	}
+}

@@ -59,6 +59,18 @@ public void interp(Node[] nodes, int mode)
 			} else if (key.type == "char")
 			{
 				charmap[key.name] = to!char(key.value);
+			} else if (key.type == "char<max>"){
+				try {
+					map_str[key.name] = key.value;
+				} catch(Exception e){
+					_error("Can't put more then 256 char inside of a char<max>.");
+				}
+			} else if (key.type == "bool"){
+				try {
+					boolmap[key.name] = to!bool(key.value.replace("\"", ""));
+				} catch (Exception e){
+					_error("You can only put `true or false` inside of a `bool`.");
+				}
 			}
 		} else if (auto key = cast(FuncCall)io)
 		{
@@ -95,6 +107,8 @@ public void interp(Node[] nodes, int mode)
 						} else if (lp1 in doublemap)
 						{
 							write(doublemap[lp1]);
+						} else if (lp1 in boolmap){
+							write(boolmap[lp1]);						
 						} else {
 							_error("\"\033[32m\033[1m" ~ lp1.replace("@", "") ~ "\033[0m\"" ~ " does not exist in any of the data types or is undefined.");
 						}
@@ -145,13 +159,14 @@ public void interp(Node[] nodes, int mode)
 					if (!(argsa[1].startsWith("\"") && argsa[1].endsWith("\""))) _error("`_label: " ~ map_str["@BOLD"] ~ "Third argument`," ~ map_str["@RESET"] ~" The input must be a string.");
 					else argsa[1] = argsa[1].replace("\"", "");
 					if (argsa[1] == "center"){
-						glabel[argsa[0]] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Center, gwin[argsa[2].replace("\"", "")]);
+						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Center, gwin[argsa[2].replace("\"", "")]);
 					} else if (argsa[1] == "left")
 					{
-						glabel[argsa[0]] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Left, gwin[argsa[2].replace("\"", "")]);
+						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Left, gwin[argsa[2].replace("\"", "")]);
 					} else if (argsa[1] == "right")
 					{
-						glabel[argsa[0]] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Right, gwin[argsa[2].replace("\"", "")]);
+						if (!(argsa[0].replace("\"", "") in gwin)) _error("No window with name `" ~ argsa[0] ~ "` exists.");
+						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Right, gwin[argsa[2].replace("\"", "")]);
 					} else {
 						_error("`_label`: " ~ argsa[1] ~" The specified text position does not exist.");
 					}
@@ -308,6 +323,56 @@ public void interp(Node[] nodes, int mode)
 					tick = false;
 				}
 			} else _error("Such an event is not defined.");
+		} else if (auto key = cast(ChangeValueDefine)io){
+			if (key.name in intmap){
+				try {
+					intmap[key.name] = to!int(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `numbers` inside of an `int`.");
+				}
+			} else if (key.name in floatmap){
+				try {
+					floatmap[key.name] = to!float(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `float nunmbers` inside of a `float`.");
+				}
+			} else if (key.name in boolmap){
+				try {
+					boolmap[key.name] = to!bool(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `true or false` inside of a `bool`.");
+				}
+			} else if (key.name in charmap){
+				try {
+					charmap[key.name] = to!char(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `char` inside of a `char`.");
+				}
+			} else if (key.name in shortmap){
+				try {
+					shortmap[key.name] = to!short(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `numbers " ~ to!string(short.min) ~ " to " ~ to!string(short.max) ~ "` inside of an `short`.");
+				}
+			} else if (key.name in longmap){
+				try {
+					shortmap[key.name] = to!short(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `numbers " ~ to!string(long.min) ~ " to " ~ to!string(long.max) ~ "` inside of an `longmap`.");
+				}
+			} else if (key.name in doublemap){
+				try {
+					doublemap[key.name] = to!double(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `numbers " ~ to!string(double.sizeof) ~ "` inside of an `longmap`.");
+				}
+			} else if (key.name in map_str){
+				try {
+					map_str[key.name] = to!string(key.newvalue);
+				} catch(Exception e){
+					_error("You can only put `string` inside of an `string`.");
+				}
+			}
 		}
 	}
 }
