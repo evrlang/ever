@@ -10,3 +10,9 @@ Here is a short info about every single file in there:
 `escape.d`: custom escape manager for ever.
 
 `runtime.d`: use ast and translate it to IR language happend in here, also main runtime.
+
+`cbackend.d`: C-backend main file.
+
+`clito.d`: REPL fucntions.
+
+`ver.d`: Global ver string.

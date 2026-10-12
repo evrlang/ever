@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/evrdocs
+evrdocs.so
+evrdocs.dylib
+evrdocs.dll
+libevrdocs.a
+evrdocs.a
+evrdocs.lib
+evrdocs-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

@@ -1,0 +1,3 @@
+gen const<char>* @name "Pouya\n"
+gen char<*> @namea "CR7"
+def:write @namea

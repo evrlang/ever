@@ -9,5 +9,9 @@ import std.json, std.array;
  */
 string escapeManager(string txt)
 {
-    return txt.replace("\\cp", ")").replace("\\c", "(").replace("\\b", "\"");
+    return txt.replace("\\cp", ")")
+    .replace("\\c", "(")
+    .replace("\\b", "\"")
+    .replace("\\n", "\n")
+    .replace("\\t", "\t");
 }

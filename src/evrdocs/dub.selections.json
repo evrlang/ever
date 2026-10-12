@@ -1,0 +1,7 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"arsd-official": "10.7.0",
+		"axiom": {"path":"../axiom"}
+	}
+}

@@ -42,3 +42,4 @@ public long[string] longmap;
 public double[string] doublemap;
 public string[string] map_str;
 public string[string] func_table; 
+public string[string] global_charconstp;

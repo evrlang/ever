@@ -71,6 +71,12 @@ public void interp(Node[] nodes, int mode)
 				} catch (Exception e){
 					_error("You can only put `true or false` inside of a `bool`.");
 				}
+			} else if (key.type == "const<char>*"){
+				try {
+				global_charconstp[key.name] = key.value.replace("\"", "");
+				} catch (Exception e){
+					_error(e.msg);
+				}
 			}
 		} else if (auto key = cast(FuncCall)io)
 		{
@@ -109,6 +115,8 @@ public void interp(Node[] nodes, int mode)
 							write(doublemap[lp1]);
 						} else if (lp1 in boolmap){
 							write(boolmap[lp1]);						
+						} else if (lp1 in global_charconstp){
+							write(escapeManager(global_charconstp[lp1]));						
 						} else {
 							_error("\"\033[32m\033[1m" ~ lp1.replace("@", "") ~ "\033[0m\"" ~ " does not exist in any of the data types or is undefined.");
 						}
@@ -154,19 +162,22 @@ public void interp(Node[] nodes, int mode)
 				//do it all time for safty
 				string[] argsa = safe_args(map_str, argsa1);
 				//writeln(argsa);
+				//writeln(gwin);
 				if (argsa.length >= 3) {
 					//writeln(argsa);
 					if (!(argsa[1].startsWith("\"") && argsa[1].endsWith("\""))) _error("`_label: " ~ map_str["@BOLD"] ~ "Third argument`," ~ map_str["@RESET"] ~" The input must be a string.");
 					else argsa[1] = argsa[1].replace("\"", "");
 					if (argsa[1] == "center"){
-						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Center, gwin[argsa[2].replace("\"", "")]);
+						if (!(argsa[0].replace("\"", "") in gwin)) _error("No window with name `" ~ argsa[0] ~ "` exists.");
+						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[2].replace("\"", ""), TextAlignment.Center, gwin[argsa[0].replace("\"", "")]);
 					} else if (argsa[1] == "left")
 					{
-						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Left, gwin[argsa[2].replace("\"", "")]);
+						if (!(argsa[0].replace("\"", "") in gwin)) _error("No window with name `" ~ argsa[0] ~ "` exists.");
+						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[2].replace("\"", ""), TextAlignment.Left, gwin[argsa[0].replace("\"", "")]);
 					} else if (argsa[1] == "right")
 					{
 						if (!(argsa[0].replace("\"", "") in gwin)) _error("No window with name `" ~ argsa[0] ~ "` exists.");
-						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[0].replace("\"", ""), TextAlignment.Right, gwin[argsa[2].replace("\"", "")]);
+						glabel[argsa[0].replace("\"", "")] = new TextLabel(argsa[2].replace("\"", ""), TextAlignment.Right, gwin[argsa[0].replace("\"", "")]);
 					} else {
 						_error("`_label`: " ~ argsa[1] ~" The specified text position does not exist.");
 					}
@@ -372,6 +383,8 @@ public void interp(Node[] nodes, int mode)
 				} catch(Exception e){
 					_error("You can only put `string` inside of an `string`.");
 				}
+			} else if (key.name in global_charconstp){
+				_error("You can't change value of a `const`.");
 			}
 		}
 	}

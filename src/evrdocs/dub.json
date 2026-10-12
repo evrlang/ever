@@ -1,0 +1,14 @@
+{
+	"description": "Document maker for EVER",
+	"license": "GPL-3.0-only",
+	"authors": [
+		"Pouya Mohammadi"
+	],
+	"copyright": "Copyright © 2026, Pouya Mohammadi",
+	"name": "evrdocs",
+	"dependencies": {
+		"axiom": {
+			"path": "../axiom"
+		}
+	}
+}

@@ -128,7 +128,9 @@ void cli(){
     writeln("\033[1m\033[32mEver\033[0m\033[1m " ~ ever_ver ~ " - (C) 2026 - Pouya Mohammadi.\033[0m");
     writeln("Use `;help` to show help menu. or use `;help option` to see help menu of an option.");
     write("\033[1m>>>\033[0m ");
-    repl();
+    while(true){
+        repl();
+    }
 
 }
 
@@ -157,5 +159,4 @@ void repl(){
 			interp(parser_result, 0);
     }
     write("\n\033[1m>>> \033[0m");
-    repl();
 }
