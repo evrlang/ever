@@ -1,0 +1,10 @@
+//normal string in Ever
+gen string @name "ever"
+@name "evrlang"
+def:write (@name + "\n")
+
+//Make a immutable (const) string in Ever (can't change it value after defined.)
+gen const<char>* @na "CR7"
+def:write (@na + "\n")
+//@na "CR8"
+//uncomment up line to see whats happend when you want to change value of a const.

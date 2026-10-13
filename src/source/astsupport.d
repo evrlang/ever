@@ -4,14 +4,15 @@ import std.stdio;
 import axiom;
 import runtime;
 
-import std.file, std.string, std.algorithm, cbackend, core.stdc.stdlib, ver, clito;
+import std.file, std.string, std.algorithm, cbackend, core.stdc.stdlib, ver, clito, std.typecons;
 
 bool ccp = false;
-void astSupportRun(string filepath, int mode)
+void astSupportRun(Nullable!string filepath, int mode)
 {
-    if (exists(filepath))
+    string path = filepath.get;
+    if (exists(path))
     {
-        auto fileline = readText(filepath).splitLines();
+        auto fileline = readText(path).splitLines();
         foreach(li; fileline)
         {
             //writeln(ccp, li);
@@ -44,10 +45,9 @@ void astSupportRun(string filepath, int mode)
     }
 }
 
-void astSupportLine(string li, int mode)
+void astSupportLine(Nullable!string li, int mode)
 {
-
-    Tokens[] tokenlist = lexer(li);
+    Tokens[] tokenlist = lexer(li.get);
 			//writeln(tokenlist);
 	Node[] parser_result = parser(tokenlist);
     if (mode == 1) writeln(parser_result);
@@ -56,10 +56,10 @@ void astSupportLine(string li, int mode)
 }
 
 
-void astSupportCompile(string liq)
+void astSupportCompile(Nullable!string liq)
 {
-    string target = liq.replace(".evr", "").replace(".ever", "");
-    auto fileline = readText(liq).splitLines();
+    string target = liq.get.replace(".evr", "").replace(".ever", "");
+    auto fileline = readText(liq.get).splitLines();
     Node[] gb;
         foreach(li; fileline)
         {
@@ -88,10 +88,10 @@ void astSupportCompile(string liq)
         convert(gb, target);
 }
 
-void debg(string filen, int mode){
+void debg(Nullable!string filen, int mode){
     if (mode == 1)
     {
-        string[] lines = filen.splitLines();
+        string[] lines = filen.get.splitLines();
         foreach(string li; lines){
             Tokens[] tokenlist = lexer(li);
 			//writeln(tokenlist);
@@ -103,17 +103,32 @@ void debg(string filen, int mode){
     }
 }
 
-void compileuseC(string outputname, string filec, int linkercode){
+void compileuseC(Nullable!string outputname, string filec, int linkercode){
     Node[] result;
     string[] lines = filec.splitLines();
     foreach(string line; lines){
+        if (ccp)
+            {
+                if (line.startsWith("*#"))
+                {
+                    ccp = false;
+                    continue;
+                } else continue;
+            }
+            if (line.startsWith("#*")){
+                ccp = true;
+                continue;
+            }
+            if (line.startsWith("#")) continue;
+            if (line.startsWith("//")) continue;
+            
         //writeln(line);
         Tokens[] tks = lexer(line);
         //writeln(tks);
         result ~= parser(tks);
         //writeln(result);
     }
-    Cfile resu = cbackend_cc(outputname, result);
+    Cfile resu = cbackend_cc(outputname.get.replace(".evr", ".c").replace(".ever", ".c"), result);
     auto resf = File(resu.filename, "w");
     resf.write(resu.filen);
     resf.close();
@@ -163,7 +178,7 @@ void repl(){
     write("\n\033[1m>>> \033[0m");
 }
 
-void dwarf_compileuseC(string outputname, string filec, int linkercode){
+void dwarf_compileuseC(Nullable!string outputname, string filec, int linkercode){
     Node[] result;
     string[] lines = filec.splitLines();
     foreach(string line; lines){
@@ -173,7 +188,7 @@ void dwarf_compileuseC(string outputname, string filec, int linkercode){
         result ~= parser(tks);
         //writeln(result);
     }
-    Cfile resu = cbackend_cc(outputname, result);
+    Cfile resu = cbackend_cc(outputname.get, result);
     auto resf = File(resu.filename, "w");
     resf.write(resu.filen);
     resf.close();

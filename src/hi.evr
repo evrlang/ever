@@ -1,1 +1,3 @@
-def:write "Hello world\n"
+//Define a const char*
+gen const<char>* @j "JJ\n"
+def:write @j
