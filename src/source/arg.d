@@ -53,6 +53,8 @@ void args_manager(string[] args){
         } else if (option == "--debug" || option == "-d")
         {
             add_JSON_entry("debug", "true");
+        } else if (option == "./evr" || option == "evr"){
+            continue;
         } else {
             add_JSON_entry("value", option);
         }
@@ -98,13 +100,15 @@ void args_main()
 
     if (!cfgst.enter.isNull && cfgst.enter)
     {
+        if (cfgst.value.isNull || !exists(cfgst.value.get)) _error("The imported file does not exists.");
         astSupportRun(cfgst.value, 0);
     } else if (cfgst.compile)
     {
+        if (cfgst.value.isNull || !exists(cfgst.value.get)) _error("The imported file does not exists.");
         if (cfgst.compile_backend == "c")
         {
             if (cfgst.compile_linker.isNull) {
-                if (!cfgst.value.isNull && !exists(cfgst.value.get)) writeln(red ~ bold ~ "Error:" ~ reset ~" The imported file does not exist.");
+                if (!cfgst.value.isNull && !exists(cfgst.value.get)) _error("The imported file does not exist.");
                 compileuseC(cfgst.value, readText(cfgst.value.get), 0);
             } else {
                 if (cfgst.compile_linker == "ld")
@@ -125,6 +129,10 @@ void args_main()
     } else if (cfgst._version)
     {
 		writeln("\033[1mever (V" ~ ever_ver ~ ") " ~ __DATE__ ~ " " ~ __TIME__);
+    } else if (cfgst._debug){
+        if (cfgst.value.isNull || !exists(cfgst.value.get)) _error("File Not exists.");
+        //writeln(cfgst.value.get);
+        debg(readText(cfgst.value.get), 1);
     } else {
         prHelpMenu();
         _error("No option exists like whats you entered.");

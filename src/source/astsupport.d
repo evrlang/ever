@@ -88,10 +88,10 @@ void astSupportCompile(Nullable!string liq)
         convert(gb, target);
 }
 
-void debg(Nullable!string filen, int mode){
+void debg(string filen, int mode){
     if (mode == 1)
     {
-        string[] lines = filen.get.splitLines();
+        string[] lines = filen.splitLines();
         foreach(string li; lines){
             Tokens[] tokenlist = lexer(li);
 			//writeln(tokenlist);
