@@ -1,0 +1,8 @@
+gen const<char>* @name "ever\n"
+def:write @name
+/*
+    Also Support:
+         1. const char* as const<char>*
+         2. char[256] as char<max>
+         3. char* as char<*>
+*/

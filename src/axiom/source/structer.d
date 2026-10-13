@@ -33,6 +33,7 @@ struct BlockDelegates
 	string boolen;
 	Node[] bodyo;
 }
+//HASHMAPS
 public int[string] intmap;
 public float[string] floatmap;
 public bool[string] boolmap;
@@ -43,3 +44,4 @@ public double[string] doublemap;
 public string[string] map_str;
 public string[string] func_table; 
 public string[string] global_charconstp;
+public float[][string] global_floatarray;

@@ -117,6 +117,8 @@ public void interp(Node[] nodes, int mode)
 							write(boolmap[lp1]);						
 						} else if (lp1 in global_charconstp){
 							write(escapeManager(global_charconstp[lp1]));						
+						} else if(lp1 in global_floatarray){
+							write(global_floatarray[lp1]);
 						} else {
 							_error("\"\033[32m\033[1m" ~ lp1.replace("@", "") ~ "\033[0m\"" ~ " does not exist in any of the data types or is undefined.");
 						}
@@ -385,6 +387,24 @@ public void interp(Node[] nodes, int mode)
 				}
 			} else if (key.name in global_charconstp){
 				_error("You can't change value of a `const`.");
+			}
+		} else if (auto key = cast(DefineArray)io)
+		{
+			if (key.type == "array<f32>")
+			{
+				float[] array;
+				foreach(mem; key.members)
+				{
+					try {
+						float ie = to!float(mem);
+						array ~= ie;
+					} catch(Exception e){
+						_error("You can only put `float(f32)` in array<f32>");
+					}
+				}
+				//writeln(array);
+				global_floatarray[key.name] = array;
+				//writeln(global_floatarray);
 			}
 		}
 	}

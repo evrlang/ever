@@ -130,7 +130,7 @@ Tokens[] lexer(string lineo)
 		} else if (tok == "generate" || tok == "gen")
 		{
 			result ~= Tokens(Token.KeyWord, tok);
-		} else if (tok == "string" || tok == "int" || tok == "float" || tok == "long" || tok == "short" || tok == "double" || tok == "char<*>" || tok == "const<char>*" || tok == "char<max>")
+		} else if (tok == "string" || tok == "int" || tok == "float" || tok == "long" || tok == "short" || tok == "double" || tok == "char<*>" || tok == "const<char>*" || tok == "char<max>" || tok == "array<f32>")
 		{
 			result ~= Tokens(Token.Type, tok);
 			//writeln(tok);

@@ -20,7 +20,12 @@ Node[] parser(Tokens[] tokens){
 					break;
 				} else continue;
 			}
-		} else result ~= new DefineKeyWord("gen", tokens[1].valu, tokens[2].valu, tokens[3].valu);
+		} else {
+			if (tokens[1].valu.startsWith("array<") && tokens[1].valu.endsWith(">"))
+			{
+				result ~= new DefineArray(tokens[2].valu, tokens[1].valu, Tokenlz(tokens[3].valu));
+			} else result ~= new DefineKeyWord("gen", tokens[1].valu, tokens[2].valu, tokens[3].valu);
+		}
 	} else if(tokens.length > 0 && tokens[0].type == Token.Func){
 		foreach(op; iao)
 		{

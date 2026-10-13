@@ -1,0 +1,3 @@
+gen array<f32> @arr (192.873 1973.82772 99837.927)
+def:write @arr
+def:write "\n"

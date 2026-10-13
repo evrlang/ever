@@ -1,0 +1,6 @@
+gen array<f32> @array (19.0 19.2 19.4)
+def:write @array
+def:write "\n"
+gen array<f32> @d (873.039 83973.838)
+def:write @d
+def:write "\n"

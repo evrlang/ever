@@ -91,15 +91,17 @@ void astSupportCompile(Nullable!string liq)
 void debg(string filen, int mode){
     if (mode == 1)
     {
+        Node[] resu;
         string[] lines = filen.splitLines();
         foreach(string li; lines){
             Tokens[] tokenlist = lexer(li);
 			//writeln(tokenlist);
-		    Node[] parser_result = parser(tokenlist);
-            auto ak = File("output.txt", "w");
-            ak.write(parser_result, "\n--TOKENS--\n", tokenlist);
-            ak.close();
+		    resu ~= parser(tokenlist);
         }
+
+        auto ak = File("output.txt", "w");
+        ak.write(resu, "\n");
+        ak.close();
     }
 }
 

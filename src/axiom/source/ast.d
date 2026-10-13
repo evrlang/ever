@@ -117,3 +117,15 @@ class ChangeValueDefine : Node {
 		this.newvalue = newvalue;
 	}
 }
+
+class DefineArray : Node {
+	string name;
+	string type;
+	string[] members;
+	this(string name, string type, string[] members)
+	{
+		this.name = name;
+		this.type = type;
+		this.members = members;
+	}
+}
