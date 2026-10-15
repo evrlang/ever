@@ -39,11 +39,6 @@ if [ -f "/usr/local/lib/libcbased.so" ]; then
 	fi
 else 
 	cd evrlib
-	make libcbased.so
-	make libevrlib.so
-	sudo mv libcbased.so /usr/local/lib
-	sudo mv libevrlib.so /usr/local/lib
-	sudo ldconfig
-	cd ..
+	./build.sh
 	echo "run compile.sh again."
 fi

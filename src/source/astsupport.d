@@ -198,6 +198,7 @@ void dwarf_compileuseC(Nullable!string outputname, string filec, int linkercode)
     if (linkercode == 0) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
     if (linkercode == 1) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -fuse-ld=gold -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
     if (linkercode == 2) system(toStringz("gcc " ~ resu.filename.replace(".c", ".o") ~ " -fuse-ld=lld -L/usr/local/lib -levrlib -o " ~ resu.filename.replace(".c", "")));
+    //write(resu.filen);
     remove(resu.filename);
     //writeln(result);
 }

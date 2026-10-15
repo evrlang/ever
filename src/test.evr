@@ -1,1 +1,2 @@
-def:write "Hello\dworld\n"
+gen array<f32> @flt (19.1 19.3)
+def:write (@flt + "\n" + "\b" + "\cp" + "\c" + "\n")

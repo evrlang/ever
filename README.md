@@ -52,10 +52,8 @@ Download the source code from the releases and unzip it.
 Then, go to the `evrlib` folder using `cd` and run:
 
 ```bash
-make
+./build.sh
 ```
-
-After that, simply run `make install` on same folder to install library into `/usr/local/lib` so the linker can find it easily.
 
 Now, go to the `src` folder inside the Ever source directory and run:
 
@@ -69,5 +67,7 @@ dub build
 > dub build --build=release
 > ```
 
+# License
+Ever using [GPL-V3.0-ONLY](LICENSE) as License.
 
 ### Continue With [Getting Started](docs/GETSTART.md)

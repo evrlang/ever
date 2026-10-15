@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/devrlib
+devrlib.so
+devrlib.dylib
+devrlib.dll
+libdevrlib.a
+devrlib.a
+devrlib.lib
+devrlib-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
