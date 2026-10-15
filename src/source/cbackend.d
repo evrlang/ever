@@ -37,6 +37,27 @@ bool strisDigit(string str){
     //writeln(result);
     return result;
 }
+
+void getArrayType(ref string a)
+{
+    string resu = "";
+    bool hsd;
+    foreach(char b; a)
+    {
+        if (hsd && b != '>'){
+            resu ~= b;
+            continue;
+        } else if (b == '<')
+        {
+            hsd = true;
+            continue;
+        } else if (b == '<')
+        {
+            break;
+        }
+    }
+    a = resu;
+}
 string[] ckeywords = ["char", "const", "int", "do", "auto", "continue", "default", "case", "break", "double", "while"];
 string[] stdfuncs = ["write"];
 Cfile cbackend_cc(string outputname, Node[] asts){
@@ -141,6 +162,17 @@ Cfile cbackend_cc(string outputname, Node[] asts){
                 }
             }
         } 
+    } else if (auto ast = cast(DefineArray)u)
+    {
+        if (ast.type.startsWith("array<") && ast.type.endsWith(">"))
+        {
+            string type;
+            getArrayType(type);
+            if (type == "f32")
+            {
+                
+            }
+        }
     }
     }
 

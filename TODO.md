@@ -9,3 +9,4 @@
 7. support metaprogramming a little.
 8. make `write` support print all datatypes in compile mode.
 9. `raylib` support.
+10. change reg support.

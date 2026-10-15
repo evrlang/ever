@@ -13,5 +13,10 @@ string escapeManager(string txt)
     .replace("\\c", "(")
     .replace("\\b", "\"")
     .replace("\\n", "\n")
-    .replace("\\t", "\t");
+    .replace("\\t", "\t")
+    .replace("\\a", "\a")
+    .replace("\\d", "\b")
+    .replace("\\r", "\r")
+    .replace("\\v", "\v")
+    .replace("\\f", "\f");
 }
