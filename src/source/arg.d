@@ -14,6 +14,7 @@ struct ConfigStatus {
     Nullable!bool help;
     Nullable!bool _debug;
     Nullable!string value;
+    Nullable!bool dp;
 }
 
 void add_JSON_entry(string name, string value){
@@ -55,6 +56,8 @@ void args_manager(string[] args){
             add_JSON_entry("debug", "true");
         } else if (option == "./evr" || option == "evr"){
             continue;
+        } else if (option == "--debug-printall" || option == "-dp"){
+            add_JSON_entry("debug_printall", "true");
         } else {
             add_JSON_entry("value", option);
         }
@@ -95,12 +98,16 @@ void args_main()
         } else if (key == "value")
         {
             cfgst.value = value.str;
+        } else if (key == "debug_printall")
+        {
+            cfgst.dp = to!bool(value.str);
         }
     }
 
     if (!cfgst.enter.isNull && cfgst.enter)
     {
         if (cfgst.value.isNull || !exists(cfgst.value.get)) _error("The imported file does not exists.");
+        if (!cfgst.dp.isNull && cfgst.dp) dp_all = true;
         astSupportRun(cfgst.value, 0);
     } else if (cfgst.compile)
     {

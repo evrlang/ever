@@ -65,10 +65,11 @@ string[] ckeywords = ["char", "const", "int", "do", "auto", "continue", "default
 string[] stdfuncs = ["write"];
 Cfile cbackend_cc(string outputname, Node[] asts){
     //writeln(asts);
-    string content = "#include <stdio.h>\n#include \"evrlib.h\"\nint main(int argc, char *argv[]){\n";
+    string content = "#include <stdio.h>\n#include \"evrlib.h\"\nint main(int argc, char *argv[]){\nchar *RED = \"\033[31m\";\nchar *BOLD = \"\033[1m\";\nchar *RESET = \"\033[0m\";\n";
     foreach(Node u; asts){
         //writeln(u);
     if (auto ast = cast(DefineKeyWord)u){
+        ast.value = ast.value.replace("\"", "");
         if (ast.type == "const<char>*"){
             if (!(ast.name.startsWith("@"))){
                 _error("In Ever, Name of values must start with `@`. (In const<char>*)");
@@ -115,7 +116,7 @@ Cfile cbackend_cc(string outputname, Node[] asts){
                     _error("In C-Backend mode, you can't use a keyword name `" ~ keyword ~ "` as name of a value.");
                 }
             }
-            global_char_max[ast.name.replace("@", "")] = escapeManagerC(ast.value);
+            global_char_max[ast.name.replace("@", "")] = escapeManagerC(ast.value).replace("\"", "");
             content ~= "char " ~ ast.name.replace("@", "") ~ "[256] = \"" ~ ast.value ~ "\";\n";
         } else if (ast.type == "int"){
             if (!(ast.name.startsWith("@"))){
@@ -154,9 +155,14 @@ Cfile cbackend_cc(string outputname, Node[] asts){
                                 gf = gf.strip();
                                 if (gf.startsWith("@"))
                                 {
+                                    bool st = false;
+                                    if (gf in map_str)
+                                    {
+                                        st = true;
+                                    }
                                     gf = gf.replace("@", "");
-
-                                    if (!(gf in global_charp) && !(gf in global_char_max) && !(gf in global_const_char_p) && !(gf in global_int) && !(gf in global_floatarray)){
+                                    
+                                    if ((!st) && !(gf in global_charp) && !(gf in global_char_max) && !(gf in global_const_char_p) && !(gf in global_int) && !(gf in global_floatarray)){
                                     _error("No value with name `" ~ gf ~ "` not exists.");
                                     }
                                     if (gf in global_int){

@@ -4,6 +4,7 @@ import structer, ast;
 import lex, axiom, std.string;
 import std.ascii : isDigit;
 import std.conv, error, safeargs;
+import std.datetime;
 
 Node[] parser(Tokens[] tokens){
 	Node[] result;
@@ -24,7 +25,10 @@ Node[] parser(Tokens[] tokens){
 			if (tokens[1].valu.startsWith("array<") && tokens[1].valu.endsWith(">"))
 			{
 				result ~= new DefineArray(tokens[2].valu, tokens[1].valu, Tokenlz(tokens[3].valu));
-			} else result ~= new DefineKeyWord("gen", tokens[1].valu, tokens[2].valu, tokens[3].valu);
+			} else {
+				//writeln(tokens[1].valu, " ", tokens[2].valu, " ", tokens[3].valu);
+				result ~= new DefineKeyWord("gen", tokens[1].valu, tokens[2].valu, tokens[3].valu);
+			}
 		}
 	} else if(tokens.length > 0 && tokens[0].type == Token.Func){
 		foreach(op; iao)
@@ -124,7 +128,15 @@ Node[] parser(Tokens[] tokens){
 	} else if (tokens.length == 2 && tokens[0].type == Token.Name && tokens[1].type == Token.Value){
 		result ~= new ChangeValueDefine(tokens[0].valu, tokens[1].valu);
 	}
+	
+	map_str["@RED"] = "\033[31m";
+	map_str["@RESET"] = "\033[0m";
+	map_str["@BOLD"] = "\033[1m";
+	map_str["@GREEN"] = "\033[32m";
+	auto clt = Clock.currTime();
+	map_str["@DATE"] = to!string(clt.year()) ~ "-" ~ to!string(clt.month()) ~ "-" ~ to!string(clt.day());
 	//writeln(ifs);
 	//writeln(result);
 	return result;
+
 }

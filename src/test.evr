@@ -1,2 +1,6 @@
-gen array<f32> @flt (19.1 19.3)
-def:write (@flt + "\n" + "\b" + "\cp" + "\c" + "\n")
+gen array<f32> @n (2.1 2.3 2.6)
+gen array<f32> @b (19.01 19.02 19.03)
+
+@n "@n * @b"
+
+def:write (@n + "\n")

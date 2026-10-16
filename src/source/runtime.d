@@ -83,9 +83,11 @@ public void interp(Node[] nodes, int mode)
 			if (key.name == "_write")
 			{
 				string[] lp = key.arguments.split("+");
-				//writeln(key.arguments);
+				//writeln(lp);
+				//writeln(map_str);
 				foreach(lp1p; lp){
 					string lp1 = lp1p.strip();
+					//writeln(lp1);
 				if ((!lp1.startsWith("@"))){ // if it was text : _write "Hello world!"
 					auto ja = lp1.replace("\\n", "\n");
 					write(escapeManager(ja.replace("\"", "")));
@@ -93,7 +95,7 @@ public void interp(Node[] nodes, int mode)
 				} else {
 					if (lp1 in map_str)
 					{
-						write(map_str[lp1].replace("\\n", "\n"));
+						write(escapeManager(map_str[lp1]));
 					} else {
 						if (lp1 in intmap)
 						{
@@ -160,8 +162,10 @@ public void interp(Node[] nodes, int mode)
 				}
 			} else if (key.name == "_label")
 			{
+				//writeln(key.arguments);
 				string[] argsa1 = Tokenlz(key.arguments);
 				//do it all time for safty
+				//writeln(argsa1);
 				string[] argsa = safe_args(map_str, argsa1);
 				//writeln(argsa);
 				//writeln(gwin);
@@ -387,6 +391,57 @@ public void interp(Node[] nodes, int mode)
 				}
 			} else if (key.name in global_charconstp){
 				_error("You can't change value of a `const`.");
+			} else if (key.name in global_floatarray)
+			{
+				//writeln("e");
+				string ka = key.newvalue.replace("\"", "");
+				Tokens[] obp = lexer(ka);
+				//writeln(obp);
+				float[] a;
+				float[] b;
+				bool e1;
+				//table
+				int cx = 0;
+				int fx = 0;
+				int px = 0;
+				//end-of-table
+				foreach(iu; obp)
+				{
+					if (e1 == false && iu.type == Token.Value){
+						a ~= to!float(iu.valu);
+						continue;
+					} else if (iu.type == Token.MathOprators)
+					{
+						if (iu.valu == "*")
+						{
+							e1 = true;
+							cx = 1;
+						}
+					} else if ((e1 == true) && iu.type == Token.Value)
+					{
+						b ~= to!float(iu.valu);
+						continue;
+					} else if ((e1 == false) && iu.type == Token.Name)
+					{
+						a = global_floatarray[iu.valu];
+						continue;
+					} else if ((e1 == true) && iu.type == Token.Name)
+					{
+						b = global_floatarray[iu.valu];
+						continue;
+					}
+				}
+				if (cx == 1)
+				{
+					//writeln(a, b);
+					float[] res;
+					foreach(i, vale; a)
+					{
+						res ~= a[i] * b[i];
+					}
+					global_floatarray[key.name] = res;
+				}
+
 			}
 		} else if (auto key = cast(DefineArray)io)
 		{

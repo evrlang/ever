@@ -1,13 +1,15 @@
 module tokena;
 import std.stdio;
 
+bool inString = false;
+bool inParan = false;
+bool inBr = false;
+
 string[] Tokenlz(string line)
 {
 	string[] result;
 	string curent;
-	bool inString = false;
-	bool inParan = false;
-	bool inBr = false;
+	
 	foreach(char a; line)
 	{
 		//write(a);
@@ -22,6 +24,11 @@ string[] Tokenlz(string line)
 			}
 			inString = !inString;
 			curent ~= a;
+			continue;
+		} else if(a == '"' && inParan)
+		{
+			curent ~= a;
+			inString = !inString;
 			continue;
 		} else if (a == '}' && inBr && inString){
 			curent ~= a;
@@ -42,14 +49,17 @@ string[] Tokenlz(string line)
 			result ~= curent;
 			curent = "";
 			continue;
-		} else if(a == ' ' && !inParan){
+		} else if(a == ' ' && !inParan && (inString == false)){
 			if (inString == true)
 			{
 				curent ~= a;
+				continue;
 			} else if (curent.length > 0)
 			{
 				result ~= curent;
 				curent = "";
+				continue;
+			} else {
 				continue;
 			}
 		} else if(a == '{' && inString){

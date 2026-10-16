@@ -30,3 +30,4 @@ public void prHelpMenu()
 	writeln("\t--compile-bc-dwarf : allow to create debug information via dwarf debug format using dwarf-4. (only for C-Backend mode for now.)");
 	writeln("\nExample: ./evr -e hi.evr\033[0m");
 }
+

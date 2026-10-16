@@ -11,7 +11,8 @@ enum Token {
 	BrNeedFunc,
 	Br1,
 	Br2,
-	BrInside
+	BrInside,
+	MathOprators
 }
 struct Tokens {
 	Token type;

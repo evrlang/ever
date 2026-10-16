@@ -1,20 +1,28 @@
 module astsupport;
 
+//imports
+
 import std.stdio;
 import axiom;
 import runtime;
 
 import std.file, std.string, std.algorithm, cbackend, core.stdc.stdlib, ver, clito, std.typecons;
+import dbg;
+
+//end of imports
 
 bool ccp = false;
+public bool dp_all = false; //turn this true to print all process.
 void astSupportRun(Nullable!string filepath, int mode)
 {
     string path = filepath.get;
     if (exists(path))
     {
+        if (dp_all) dbgprint_format("work with `" ~ path ~ "` source file.");
         auto fileline = readText(path).splitLines();
         foreach(li; fileline)
         {
+            if (dp_all) dbgprint_format("Reading line `" ~ li ~ "`.");
             //writeln(ccp, li);
             if (ccp)
             {
@@ -32,27 +40,19 @@ void astSupportRun(Nullable!string filepath, int mode)
             if (li.startsWith("//")) continue;
             
             Tokens[] tokenlist = lexer(li);
+            if(dp_all)
+            {
+                writeln("\t", tokenlist);
+            }
 			//writeln(tokenlist);
 			Node[] parser_result = parser(tokenlist);
-			//writeln(parser_result);
+			if(dp_all) writeln(parser_result);
             //if (mode == 1) writeln(parser_result);
-            map_str["@RED"] = "\033[31m";
-            map_str["@RESET"] = "\033[0m";
-            map_str["@BOLD"] = "\033[1m";
-            map_str["@GREEN"] = "\033[32m";
+            
+            if (dp_all) dbgprint_format("Calling runtime for AST.");
 			interp(parser_result, 0);
         }
     }
-}
-
-void astSupportLine(Nullable!string li, int mode)
-{
-    Tokens[] tokenlist = lexer(li.get);
-			//writeln(tokenlist);
-	Node[] parser_result = parser(tokenlist);
-    if (mode == 1) writeln(parser_result);
-			//writeln(lexer_result);
-	interp(parser_result, 0);
 }
 
 
@@ -161,7 +161,7 @@ void repl(){
         //writeln(func);
         if (func.length >= 1 && func[0] == ";help"){
             Clitools.helpmenu("");
-        } else if (func.length == 1 && func[0] == ";quit"){
+        } else if (func.length == 1 && (func[0] == ";quit" || func[0] == ";q")){
             Clitools.end();
         }
     } else {
@@ -171,10 +171,7 @@ void repl(){
 			Node[] parser_result = parser(tokenlist);
 			//writeln(parser_result);
             //if (mode == 1) writeln(parser_result);
-            map_str["@RED"] = "\033[31m";
-            map_str["@RESET"] = "\033[0m";
-            map_str["@BOLD"] = "\033[1m";
-            map_str["@GREEN"] = "\033[32m";
+            
 			interp(parser_result, 0);
     }
     write("\n\033[1m>>> \033[0m");

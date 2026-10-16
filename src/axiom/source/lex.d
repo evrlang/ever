@@ -146,7 +146,7 @@ Tokens[] lexer(string lineo)
 			funcag = true;
 			continue;
 		} else if(tok.startsWith("\"") && tok.endsWith("\"")){
-			result ~= Tokens(Token.Value, tok.replace("\"", ""));
+			result ~= Tokens(Token.Value, tok);
 		} else if(tok == "if"){
 			if_ = true;
 			continue;
@@ -157,6 +157,8 @@ Tokens[] lexer(string lineo)
 			continue;
 		} else if (tok == "") {
 			continue;
+		} else if (tok == "*" || tok == "^" || tok == "-"){
+			result ~= Tokens(Token.MathOprators, tok);
 		} else {
 			result ~= Tokens(Token.Value, tok);
 		}
