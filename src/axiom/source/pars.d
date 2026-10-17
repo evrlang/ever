@@ -5,6 +5,8 @@ import lex, axiom, std.string;
 import std.ascii : isDigit;
 import std.conv, error, safeargs;
 import std.datetime;
+import std.regex;
+import error;
 
 Node[] parser(Tokens[] tokens){
 	Node[] result;
@@ -126,6 +128,37 @@ Node[] parser(Tokens[] tokens){
 		}
 		}
 	} else if (tokens.length == 2 && tokens[0].type == Token.Name && tokens[1].type == Token.Value){
+		/*
+		if (tokens[1].valu.startsWith("! "))
+		{
+			auto po = regex(`\! (\S+)`);
+			auto pl = match(tokens[1].valu, po);
+			string type;
+			if(!pl.empty) type = pl.captures[1];
+			else _error("Need to know type of value.");
+			Tokens[] lak = lexer(tokens[1].valu[1 .. tokens[1].valu.length]);
+			foreach(i, k; lak)
+			{
+				if (k.type == Token.MathOprator){
+					if (lak[i--].type == Token.Name && lak[i++].type == Token.Name)
+					{
+						result ~= new MathDefine([new GetValueFromHash(lak[i--].valu)], k.valu, [new GetValueFromHash(lak[i++].valu)]);
+					} else {
+						try {
+							if (type == "int")
+							{
+								auto i = to!int(lak[i--].valu);
+								auto b = to!int(lak[i++].valu);
+								result ~= new MathDefine([new NumberDefine(i)], lak.valu, [new NumberDefine(b)]);
+							}
+						} catch(Exception e)
+						{
+							_error("Value type not match with whats typed as value type. `" ~ type ~"`.");
+						}
+					}
+				}
+			}
+		} else */
 		result ~= new ChangeValueDefine(tokens[0].valu, tokens[1].valu);
 	}
 	

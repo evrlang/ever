@@ -129,3 +129,48 @@ class DefineArray : Node {
 		this.members = members;
 	}
 }
+
+class MathDefine : Node {
+	Node[] left;
+	string oprator;
+	Node[] right;
+	this(Node[] left, string oprator, Node[] right)
+	{
+		this.left = left;
+		this.oprator = oprator;
+		this.right = right;
+	}
+}
+
+
+class NumberDefine : Node {
+	int a;
+	this(int a)
+	{
+		this.a = a;
+	}
+}
+
+class FloatDefine : Node {
+	float a;
+	this(float a)
+	{
+		this.a = a;
+	}
+}
+
+class ArrrayDefine : Node {
+	Node[] a;
+	this(Node[] a)
+	{
+		this.a = a;
+	}
+}
+
+class GetValueFromHash : Node {
+	string a;
+	this(string a)
+	{
+		this.a = a;
+	}
+}
