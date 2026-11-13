@@ -1,10 +1,7 @@
 
 <img src="docs/everlogo.jpg" height="100" width="100"/>
 </center>
-> # Development Notice
-Development of Ever is temporarily paused while I prepare for university entrance examinations. The project is not abandoned. I hope to resume development after the examinations.
 
-Thank you for your interest and understanding!
 
 
 ## Quick Install (Linux/macOS)
@@ -12,6 +9,12 @@ Thank you for your interest and understanding!
 ```bash
 curl -sL https://raw.githubusercontent.com/evrlang/ever/main/install.sh | bash
 ```
+
+> # Development Notice
+Development of Ever is temporarily paused while I prepare for university entrance examinations. The project is not abandoned. I hope to resume development after the examinations.
+
+Thank you for your interest and understanding!
+
 > Make sure to read [this](docs/windows-development.md) before running the Windows version of Ever.
 
 <h1 style="font-weight:bold;"> Ever Programming Language</h1>
