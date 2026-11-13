@@ -1,6 +1,11 @@
 
 <img src="docs/everlogo.jpg" height="100" width="100"/>
 </center>
+> # Development Notice
+Development of Ever is temporarily paused while I prepare for university entrance examinations. The project is not abandoned. I hope to resume development after the examinations.
+
+Thank you for your interest and understanding!
+
 
 ## Quick Install (Linux/macOS)
 
